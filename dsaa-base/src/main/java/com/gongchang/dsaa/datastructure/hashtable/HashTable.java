@@ -1,0 +1,11 @@
+package com.gongchang.dsaa.datastructure.hashtable;
+
+/**
+ * ¹þÏ£±í
+ * 
+ * @author GongChang
+ *
+ */
+public class HashTable {
+
+}
