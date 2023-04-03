@@ -18,14 +18,14 @@ import java.util.Arrays;
  * @author GongChang
  *
  */
-public class BigOrSmallTopHeap {
+public class Heap {
 
 	public static void main(String[] args) {
 		int[] intArr = {1,5,2,7,8};
 		System.out.println("=======================原数组");
 		System.out.println(Arrays.toString(intArr));
 		
-		BigOrSmallTopHeap bigOrSmallTopHeap = new BigOrSmallTopHeap();
+		Heap bigOrSmallTopHeap = new Heap();
 		
 		bigOrSmallTopHeap.buildBigTopHeap(intArr);
 		System.out.println("=======================大顶堆");
