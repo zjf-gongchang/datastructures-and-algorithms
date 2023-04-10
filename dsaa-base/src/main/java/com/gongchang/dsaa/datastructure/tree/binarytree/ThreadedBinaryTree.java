@@ -1,11 +1,11 @@
 package com.gongchang.dsaa.datastructure.tree.binarytree;
 
 /**
- * ÏßË÷¶ş²æÊ÷
+ * çº¿ç´¢äºŒå‰æ ‘
  * 
- * ÓĞn¸ö½ÚµãµÄ¶ş²æÊ÷ÓĞn+1£¨¼ÆËã·½Ê½£º2n-(n-1)£©¸ö¿ÕÖ¸ÕëÓò£¬ÕâĞ©¿ÕÖ¸ÕëÓò¿ÉÒÔÖ¸ÏòÄ³ÖÖ±éÀú·½Ê½£¨Ç°Ğò£¬ÖĞĞò£¬ºóĞò£©ÏÂµÄÇ°Çı½áµã»òºó¼Ì½Úµã
- * ×óÖ¸ÕëÎª¿ÕÊ±Ö¸ÏòÇ°Çı½áµã£¬²»Îª¿ÕÊ±Ö¸Ïò×ó×ÓÊ÷
- * ÓÒÖ¸ÕëÎª¿ÕÊ±Ö¸Ïòºó¼Ì½Úµã£¬²»Îª¿ÕÊ±Ö¸ÏòÓÒ×ÓÊı
+ * æœ‰nä¸ªèŠ‚ç‚¹çš„äºŒå‰æ ‘æœ‰n+1ï¼ˆè®¡ç®—æ–¹å¼ï¼š2n-(n-1)ï¼‰ä¸ªç©ºæŒ‡é’ˆåŸŸï¼Œè¿™äº›ç©ºæŒ‡é’ˆåŸŸå¯ä»¥æŒ‡å‘æŸç§éå†æ–¹å¼ï¼ˆå‰åºï¼Œä¸­åºï¼Œååºï¼‰ä¸‹çš„å‰é©±ç»“ç‚¹æˆ–åç»§èŠ‚ç‚¹
+ * å·¦æŒ‡é’ˆä¸ºç©ºæ—¶æŒ‡å‘å‰é©±ç»“ç‚¹ï¼Œä¸ä¸ºç©ºæ—¶æŒ‡å‘å·¦å­æ ‘
+ * å³æŒ‡é’ˆä¸ºç©ºæ—¶æŒ‡å‘åç»§èŠ‚ç‚¹ï¼Œä¸ä¸ºç©ºæ—¶æŒ‡å‘å³å­æ•°
  * 
  * 
  * @author GongChang
@@ -87,17 +87,17 @@ public class ThreadedBinaryTree {
 	}
 	
 	/**
-	 * Ç°ĞòÏßË÷¶ş²æÊ÷
+	 * å‰åºçº¿ç´¢äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªÏßË÷»¯µÄÊ÷µÄ¸ù½Úµã
+	 * @param node éœ€è¦çº¿ç´¢åŒ–çš„æ ‘çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void preOrderThreadBinaryTree(Node node) {
-		// ½áÊøµİ¹é
+		// ç»“æŸé€’å½’
 		if(node==null) {
 			return;
 		}
 		
-		// µ±Ç°½Úµã´¦Àí
+		// å½“å‰èŠ‚ç‚¹å¤„ç†
 		if(node.getLeftNode()==null) {
 			node.setLeftNode(preThreadedNode);
 			node.setLeftType(1);
@@ -108,34 +108,34 @@ public class ThreadedBinaryTree {
 		}
 		preThreadedNode = node;
 		
-		// ×óµİ¹é
+		// å·¦é€’å½’
 		if(node.getLeftType()!=1) {
 			preOrderThreadBinaryTree(node.getLeftNode());
 		}
 		
-		// ÓÒµİ¹é
+		// å³é€’å½’
 		if(node.getRightType()!=1) {
 			preOrderThreadBinaryTree(node.getRightNode());
 		}
 	}
 	
 	/**
-	 * ÖĞĞòÏßË÷¶ş²æÊ÷
+	 * ä¸­åºçº¿ç´¢äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªÏßË÷»¯µÄÊ÷µÄ¸ù½Úµã
+	 * @param node éœ€è¦çº¿ç´¢åŒ–çš„æ ‘çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void midOrderThreadBinaryTree(Node node) {
-		// ½áÊøµİ¹é
+		// ç»“æŸé€’å½’
 		if(node==null) {
 			return;
 		}
 		
-		// ×óµİ¹é
+		// å·¦é€’å½’
 		if(node.getLeftType()!=1) {
 			midOrderThreadBinaryTree(node.getLeftNode());
 		}
 		
-		// µ±Ç°½Úµã´¦Àí
+		// å½“å‰èŠ‚ç‚¹å¤„ç†
 		if(node.getLeftNode()==null) {
 			node.setLeftNode(preThreadedNode);
 			node.setLeftType(1);
@@ -146,34 +146,34 @@ public class ThreadedBinaryTree {
 		}
 		preThreadedNode = node;
 		
-		// ÓÒµİ¹é
+		// å³é€’å½’
 		if(node.getRightType()!=1) {
 			midOrderThreadBinaryTree(node.getRightNode());
 		}
 	}
 	
 	/**
-	 * ºóĞòÏßË÷¶ş²æÊ÷
+	 * ååºçº¿ç´¢äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªÏßË÷»¯µÄÊ÷µÄ¸ù½Úµã
+	 * @param node éœ€è¦çº¿ç´¢åŒ–çš„æ ‘çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void postOrderThreadBinaryTree(Node node) {
-		// µİ¹éÍË³öÌõ¼ş
+		// é€’å½’é€€å‡ºæ¡ä»¶
 		if(node==null) {
 			return;
 		}
 		
-		// ×óµİ¹é
+		// å·¦é€’å½’
 		if(node.getLeftType()!=1) {
 			postOrderThreadBinaryTree(node.getLeftNode());
 		}
 		
-		// ÓÒµİ¹é
+		// å³é€’å½’
 		if(node.getRightType()!=1) {
 			postOrderThreadBinaryTree(node.getRightNode());
 		}
 		
-		// µ±Ç°½Úµã´¦Àí
+		// å½“å‰èŠ‚ç‚¹å¤„ç†
 		if(node.getLeftNode()==null) {
 			node.setLeftNode(preThreadedNode);
 			node.setLeftType(1);
@@ -186,9 +186,9 @@ public class ThreadedBinaryTree {
 	}
 	
 	/**
-	 * Ç°Ğòµİ¹é±éÀú¶ş²æÊ÷
+	 * å‰åºé€’å½’éå†äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªÇ°Ğò±éÀúµÄ¸ù½Úµã
+	 * @param node éœ€è¦å‰åºéå†çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void preOrderRecListBinaryTree(Node node) {
 		if(node==null) {
@@ -218,9 +218,9 @@ public class ThreadedBinaryTree {
 	}
 	
 	/**
-	 * Ç°ĞòÑ­»·±éÀú¶ş²æÊ÷
+	 * å‰åºå¾ªç¯éå†äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªÇ°Ğò±éÀúµÄ¸ù½Úµã
+	 * @param node éœ€è¦å‰åºéå†çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void preOrderLoopListBinaryTree(Node node) {
 		if(node==null) {
@@ -253,9 +253,9 @@ public class ThreadedBinaryTree {
 	}
 	
 	/**
-	 * ÖĞĞòµİ¹é±éÀú¶ş²æÊ÷
+	 * ä¸­åºé€’å½’éå†äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªÖĞĞò±éÀúµÄ¸ù½Úµã
+	 * @param node éœ€è¦ä¸­åºéå†çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void midOrderRecListBinaryTree(Node node) {
 		if(node==null) {
@@ -277,9 +277,9 @@ public class ThreadedBinaryTree {
 	}
 	
 	/**
-	 * ÖĞĞòÑ­»·±éÀú¶ş²æÊ÷
+	 * ä¸­åºå¾ªç¯éå†äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªÖĞĞò±éÀúµÄ¸ù½Úµã
+	 * @param node éœ€è¦ä¸­åºéå†çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void midOrderLoopListBinaryTree(Node node) {
 		if(node==null) {
@@ -306,9 +306,9 @@ public class ThreadedBinaryTree {
 	}
 	
 	/**
-	 * ºóĞòÑ­»·±éÀú¶ş²æÊ÷
+	 * ååºå¾ªç¯éå†äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªºóĞò±éÀúµÄ¸ù½Úµã
+	 * @param node éœ€è¦ååºéå†çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void postOrderLoopListBinaryTree(Node node) {
 		if(node==null) {
@@ -346,9 +346,9 @@ public class ThreadedBinaryTree {
 	}
 	
 	/**
-	 * ºóĞòµİ¹é±éÀú¶ş²æÊ÷
+	 * ååºé€’å½’éå†äºŒå‰æ ‘
 	 * 
-	 * @param node ĞèÒªºóĞò±éÀúµÄ¸ù½Úµã
+	 * @param node éœ€è¦ååºéå†çš„æ ¹èŠ‚ç‚¹
 	 */
 	private void postOrderRecListBinaryTree(Node node) {
 		if(node==null) {
@@ -396,12 +396,12 @@ public class ThreadedBinaryTree {
 		private Node leftNode;
 		private Node rightNode;
 		/**
-		 * 1-Ç°Çı½Úµã£¬0-×ó×ÓÊ÷
+		 * 1-å‰é©±èŠ‚ç‚¹ï¼Œ0-å·¦å­æ ‘
 		 */
 		private int leftType;
 		
 		/**
-		 * 1-ºó¼Ì½Úµã£¬0-ÓÒ×ÓÊ÷
+		 * 1-åç»§èŠ‚ç‚¹ï¼Œ0-å³å­æ ‘
 		 */
 		private int rightType;
 		

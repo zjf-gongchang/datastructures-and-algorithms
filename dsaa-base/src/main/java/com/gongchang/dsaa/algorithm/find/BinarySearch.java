@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * ¶ş·Ö²éÕÒ
+ * äºŒåˆ†æŸ¥æ‰¾
  * 
  * @author GongChang
  *
@@ -16,10 +16,10 @@ public class BinarySearch {
 		
 		Integer[] intArr = {1,3,2,55,42,-23,24,-78};
 		
-		System.out.println("ÅÅĞòÇ°µÄÊı×é£º");
+		System.out.println("æ’åºå‰çš„æ•°ç»„ï¼š");
 		arrPrint(intArr);
 		arrSort(intArr);
-		System.out.println("ÅÅĞòºóµÄÊı×é£º");
+		System.out.println("æ’åºåçš„æ•°ç»„ï¼š");
 		arrPrint(intArr);
 		
 		int findValue = 42;
@@ -35,8 +35,8 @@ public class BinarySearch {
 	}
 	
 	private static void binarySearch(Integer[] intArr, Integer findValue, MethodInvokeType methodInvokeType) {
-		System.out.println("²éÕÒ·½Ê½Îª£º"+methodInvokeType.name());
-		System.out.println("²éÕÒµÄÊı¾İÊÇ£º"+findValue);
+		System.out.println("æŸ¥æ‰¾æ–¹å¼ä¸ºï¼š"+methodInvokeType.name());
+		System.out.println("æŸ¥æ‰¾çš„æ•°æ®æ˜¯ï¼š"+findValue);
 		
 		int index = -1;
 		switch (methodInvokeType) {
@@ -47,15 +47,15 @@ public class BinarySearch {
 			index = loopBinarySearch(intArr, 0, intArr.length-1, findValue);
 			break;
 		default:
-			System.out.println("ÉĞÎ´ÊµÏÖµÄ²éÕÒ·½Ê½");
+			System.out.println("å°šæœªå®ç°çš„æŸ¥æ‰¾æ–¹å¼");
 			return;
 		}
 		
 		
 		if(index!=-1) {
-			System.out.println("ËÑË÷µ½µÄÊı¾İ¶ÔÓ¦µÄÏÂ±êÎª£º"+index);
+			System.out.println("æœç´¢åˆ°çš„æ•°æ®å¯¹åº”çš„ä¸‹æ ‡ä¸ºï¼š"+index);
 		}else {
-			System.out.println("Ã»ÓĞËÑË÷µ½ÏàÓ¦µÄÊı¾İ");
+			System.out.println("æ²¡æœ‰æœç´¢åˆ°ç›¸åº”çš„æ•°æ®");
 		}
 	}
 	
@@ -75,7 +75,7 @@ public class BinarySearch {
 	}
 	
 	private static void arrPrint(Integer[] arr) {
-		System.out.println("Êı×é´òÓ¡¿ªÊ¼===>");
+		System.out.println("æ•°ç»„æ‰“å°å¼€å§‹===>");
 		int length = arr.length;
 		for (int i=0; i< length; i++) {
 			System.out.print(arr[i]);
@@ -85,14 +85,14 @@ public class BinarySearch {
 				System.out.println();
 			}
 		}
-		System.out.println("Êı×é´òÓ¡Íê³É===<");
+		System.out.println("æ•°ç»„æ‰“å°å®Œæˆ===<");
 		System.out.println();
 	}
 	
 	private static int recursionBinarySearch(Integer[] arr, int left, int right, int findValue) {
-		// ÕâÀïµÄfindValue<arr[left] || findValue>arr[right]¿ÉÒÔÊ¡ÂÔ£¬²¢ÇÒ²»»áÓĞÈÎºÎµÄÎÊÌâ
-		// ¼ÓÔÚÕâÀïÊÇÎªÁËÌá¸ß²éÕÒĞ§ÂÊ
-		// ×¢Òâ£º²åÖµ²éÕÒÖĞÕâ¸öÅĞ¶ÏÊÇ²»ÄÜÊ¡ÂÔµÄ£¬·ñÔò»áÏÂ±êÔ½½ç
+		// è¿™é‡Œçš„findValue<arr[left] || findValue>arr[right]å¯ä»¥çœç•¥ï¼Œå¹¶ä¸”ä¸ä¼šæœ‰ä»»ä½•çš„é—®é¢˜
+		// åŠ åœ¨è¿™é‡Œæ˜¯ä¸ºäº†æé«˜æŸ¥æ‰¾æ•ˆç‡
+		// æ³¨æ„ï¼šæ’å€¼æŸ¥æ‰¾ä¸­è¿™ä¸ªåˆ¤æ–­æ˜¯ä¸èƒ½çœç•¥çš„ï¼Œå¦åˆ™ä¼šä¸‹æ ‡è¶Šç•Œ
 		if(left>right || findValue<arr[left] || findValue>arr[right]) {
 			return -1;
 		}
@@ -108,9 +108,9 @@ public class BinarySearch {
 	}
 	
 	private static int loopBinarySearch(Integer[] arr, int left, int right, int findValue) {
-		// ÕâÀïµÄfindValue<arr[left] || findValue>arr[right]¿ÉÒÔÊ¡ÂÔ£¬²¢ÇÒ²»»áÓĞÈÎºÎµÄÎÊÌâ
-		// ¼ÓÔÚÕâÀïÊÇÎªÁËÌá¸ß²éÕÒĞ§ÂÊ
-		// ×¢Òâ£º²åÖµ²éÕÒÖĞÕâ¸öÅĞ¶ÏÊÇ²»ÄÜÊ¡ÂÔµÄ£¬·ñÔò»áÏÂ±êÔ½½ç
+		// è¿™é‡Œçš„findValue<arr[left] || findValue>arr[right]å¯ä»¥çœç•¥ï¼Œå¹¶ä¸”ä¸ä¼šæœ‰ä»»ä½•çš„é—®é¢˜
+		// åŠ åœ¨è¿™é‡Œæ˜¯ä¸ºäº†æé«˜æŸ¥æ‰¾æ•ˆç‡
+		// æ³¨æ„ï¼šæ’å€¼æŸ¥æ‰¾ä¸­è¿™ä¸ªåˆ¤æ–­æ˜¯ä¸èƒ½çœç•¥çš„ï¼Œå¦åˆ™ä¼šä¸‹æ ‡è¶Šç•Œ
 		if(findValue<arr[left] || findValue>arr[right]) {
 			return -1;
 		}

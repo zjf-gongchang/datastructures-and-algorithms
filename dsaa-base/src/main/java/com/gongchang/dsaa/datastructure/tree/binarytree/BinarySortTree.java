@@ -1,18 +1,18 @@
 package com.gongchang.dsaa.datastructure.tree.binarytree;
 
 /**
- * ¶ş²æÅÅĞòÊ÷
+ * äºŒå‰æ’åºæ ‘
  * 
- * Êı×éÊÊºÏ×ögetºÍset·ÃÎÊ£¬ÒòÎª²åÈëÉ¾³ıĞèÒªÒÆ¶¯Êı×é£¬Ïà¶ÔÁ´±íÀ´Ëµ¿ªÏúºÜ´ó
- * À´ÄÃ±íÊÊºÏ×ö²åÈëÉ¾³ı£¬ÒòÎªgetºÍsetĞèÒªÒÆ¶¯Ö¸Õë£¬Ïà¶ÔÊı×éÀ´Ëµ¿ªÏúºÜ´ó
+ * æ•°ç»„é€‚åˆåšgetå’Œsetè®¿é—®ï¼Œå› ä¸ºæ’å…¥åˆ é™¤éœ€è¦ç§»åŠ¨æ•°ç»„ï¼Œç›¸å¯¹é“¾è¡¨æ¥è¯´å¼€é”€å¾ˆå¤§
+ * æ¥æ‹¿è¡¨é€‚åˆåšæ’å…¥åˆ é™¤ï¼Œå› ä¸ºgetå’Œsetéœ€è¦ç§»åŠ¨æŒ‡é’ˆï¼Œç›¸å¯¹æ•°ç»„æ¥è¯´å¼€é”€å¾ˆå¤§
  * 
- * Êı×é×öËÑË÷£º
- * 	ÈôÊÇÓĞĞòÊı×é¿ÉÒÔÓÃ¶ş·Ö²éÕÒ£¬ì³²¨ÄÇÆõ²éÕÒ£¬²îÖµ²éÕÒµÈ·½Ê½£¬µ«ÊÇÎ¬»¤ÓĞĞòÊı×é¿ªÏúºÜ´ó£¨±ÈÈçÓĞĞÂµÄÊı¾İ²åÈë£©
- * 	ÈôÊÇÎŞĞòÊı×éÔòĞèÒª±éÀú£¬¿ªÏúºÜ´ó
- * Á´±í×öËÑË÷£º
- * 	¿ªÏú¶¼´ó£¬ÒòÎªĞèÒª±éÀúÁ´±í
+ * æ•°ç»„åšæœç´¢ï¼š
+ * 	è‹¥æ˜¯æœ‰åºæ•°ç»„å¯ä»¥ç”¨äºŒåˆ†æŸ¥æ‰¾ï¼Œæ–æ³¢é‚£å¥‘æŸ¥æ‰¾ï¼Œå·®å€¼æŸ¥æ‰¾ç­‰æ–¹å¼ï¼Œä½†æ˜¯ç»´æŠ¤æœ‰åºæ•°ç»„å¼€é”€å¾ˆå¤§ï¼ˆæ¯”å¦‚æœ‰æ–°çš„æ•°æ®æ’å…¥ï¼‰
+ * 	è‹¥æ˜¯æ— åºæ•°ç»„åˆ™éœ€è¦éå†ï¼Œå¼€é”€å¾ˆå¤§
+ * é“¾è¡¨åšæœç´¢ï¼š
+ * 	å¼€é”€éƒ½å¤§ï¼Œå› ä¸ºéœ€è¦éå†é“¾è¡¨
  * 
- * ¶ş²æÅÅĞòÊ÷°Ñget,set,²åÈë£¬É¾³ı£¬ËÑË÷µÄÊ±¼ä¸´ÔÓ¶È¿ØÖÆÔÚÁËlog(n),¼´Ìá¸ßÁËËÑË÷ĞÔÄÜ£¬¶øÇÒÊ¹µÃget,set,²åÈë£¬É¾³ıµÄĞÔÄÜÒ²²»²î
+ * äºŒå‰æ’åºæ ‘æŠŠget,set,æ’å…¥ï¼Œåˆ é™¤ï¼Œæœç´¢çš„æ—¶é—´å¤æ‚åº¦æ§åˆ¶åœ¨äº†log(n),å³æé«˜äº†æœç´¢æ€§èƒ½ï¼Œè€Œä¸”ä½¿å¾—get,set,æ’å…¥ï¼Œåˆ é™¤çš„æ€§èƒ½ä¹Ÿä¸å·®
  * 
  * @author gongchang
  *
@@ -24,35 +24,35 @@ public class BinarySortTree {
 		int[] intArr = {1,7,4,3,5,6};
 		binarySortTree.buildBinaryTree(intArr);
 		
-		System.out.println("ÖĞĞò±éÀú½Úµã£º");
+		System.out.println("ä¸­åºéå†èŠ‚ç‚¹ï¼š");
 		binarySortTree.midOrderTraversal();
 		System.out.println();
 		
-		System.out.println("¸üĞÂ½Úµã7µÄÖµÎª7-new_name");
+		System.out.println("æ›´æ–°èŠ‚ç‚¹7çš„å€¼ä¸º7-new_name");
 		binarySortTree.setNode(new Node(7, "7-new_name"));
 		System.out.println();
 		
 		Node node = binarySortTree.getNode(7);
-		System.out.println("¸üĞÂºóµÄ½ÚµãÊÇ£º"+node);
+		System.out.println("æ›´æ–°åçš„èŠ‚ç‚¹æ˜¯ï¼š"+node);
 		System.out.println();
 		
-		/*System.out.println("ÖĞĞò±éÀú½Úµã£º");
+		/*System.out.println("ä¸­åºéå†èŠ‚ç‚¹ï¼š");
 		binarySortTree.midOrderTraversal();
 		System.out.println();
 		
-		System.out.println("É¾³ı½Úµã£º5");
+		System.out.println("åˆ é™¤èŠ‚ç‚¹ï¼š5");
 		binarySortTree.delNode(5);
 		System.out.println();*/
 		
-		System.out.println("ÖĞĞò±éÀú½Úµã£º");
+		System.out.println("ä¸­åºéå†èŠ‚ç‚¹ï¼š");
 		binarySortTree.midOrderTraversal();
 		System.out.println();
 		
-		System.out.println("É¾³ı½Úµã£º4");
+		System.out.println("åˆ é™¤èŠ‚ç‚¹ï¼š4");
 		binarySortTree.delNode(4);
 		System.out.println();
 		
-		System.out.println("ÖĞĞò±éÀú½Úµã£º");
+		System.out.println("ä¸­åºéå†èŠ‚ç‚¹ï¼š");
 		binarySortTree.midOrderTraversal();
 		System.out.println();
 	}
@@ -175,7 +175,7 @@ public class BinarySortTree {
 	}
 	
 	private void printEmptyTreeInfo(){
-		System.out.println("ÕâÊÇÒ»¿Å¿ÕÊ÷");
+		System.out.println("è¿™æ˜¯ä¸€é¢—ç©ºæ ‘");
 	}
 	
 	private static class Node{

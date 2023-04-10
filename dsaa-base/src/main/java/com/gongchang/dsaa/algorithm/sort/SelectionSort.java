@@ -4,15 +4,15 @@ import java.util.Arrays;
 
 
 /**
- * Ñ¡ÔñÅÅĞò
+ * é€‰æ‹©æ’åº
  * 
- * ÅÅĞòÀàĞÍ£ºÄÚ²¿ÅÅĞò
+ * æ’åºç±»å‹ï¼šå†…éƒ¨æ’åº
  * 
- * ºËĞÄË¼Ïë£º
- * 	ÈôÓĞn¸öÔªËØ£¬Ôò½øĞĞn-1ÂÖÅÅĞò
- * 	Ã¿Ò»ÂÖÅÅĞòÖĞ½«×î´óµÄÖµÒÆ¶¯µ½²ÎÓë±¾ÂÖÅÅĞòµÄÊı×éµÄÎ²²¿
+ * æ ¸å¿ƒæ€æƒ³ï¼š
+ * 	è‹¥æœ‰nä¸ªå…ƒç´ ï¼Œåˆ™è¿›è¡Œn-1è½®æ’åº
+ * 	æ¯ä¸€è½®æ’åºä¸­å°†æœ€å¤§çš„å€¼ç§»åŠ¨åˆ°å‚ä¸æœ¬è½®æ’åºçš„æ•°ç»„çš„å°¾éƒ¨
  * 
- * Ê±¼ä¸´ÔÓ¶ÈO(n2)
+ * æ—¶é—´å¤æ‚åº¦O(n2)
  * 
  * @author GongChang
  *
@@ -22,20 +22,20 @@ public class SelectionSort {
 	public static void main(String[] args) {
 		int[] intArr = {1,3,56,-2,-2,-78,332,-2,42};
 		
-		System.out.println("ÅÅĞòÇ°£º");
+		System.out.println("æ’åºå‰ï¼š");
 		System.out.println(Arrays.toString(intArr));
 		
 		selectionSort1(intArr);
 		selectionSort2(intArr);
 		
-		System.out.println("ÅÅĞòºó£º");
+		System.out.println("æ’åºåï¼š");
 		System.out.println(Arrays.toString(intArr));
 	}
 	
 	/**
-	 * ºóÒÆÊµÏÖÑ¡ÔñÅÅĞò
+	 * åç§»å®ç°é€‰æ‹©æ’åº
 	 * 
-	 * @param intArr ´ıÅÅĞòÊı×é
+	 * @param intArr å¾…æ’åºæ•°ç»„
 	 */
 	private static void selectionSort1(int[] intArr){
 		int tail = intArr.length-1;
@@ -47,7 +47,7 @@ public class SelectionSort {
 					maxIndex = j;
 				}
 			}
-			// ÕâÀïÓÅ»¯ĞÔÄÜ£¬Èç¹û×î´óÖµ¾ÍÊÇÔÚ±¾ÂÖÅÅĞòµÄÎ²²¿£¬Ôò²»½øĞĞ½»»»£¬ÖØĞÂ¿ªÊ¼ÏÂÒ»ÂÖÑ­»·¼´¿É£»·ñÔò½»»»Î»ÖÃ
+			// è¿™é‡Œä¼˜åŒ–æ€§èƒ½ï¼Œå¦‚æœæœ€å¤§å€¼å°±æ˜¯åœ¨æœ¬è½®æ’åºçš„å°¾éƒ¨ï¼Œåˆ™ä¸è¿›è¡Œäº¤æ¢ï¼Œé‡æ–°å¼€å§‹ä¸‹ä¸€è½®å¾ªç¯å³å¯ï¼›å¦åˆ™äº¤æ¢ä½ç½®
 			if(maxIndex!=subTail) {
 				int temp = intArr[maxIndex];
 				intArr[maxIndex] = intArr[subTail];
@@ -57,9 +57,9 @@ public class SelectionSort {
 	}
 	
 	/**
-	 * Ç°ÒÆÊµÏÖÑ¡ÔñÅÅĞò
+	 * å‰ç§»å®ç°é€‰æ‹©æ’åº
 	 * 
-	 * @param intArr ´ıÅÅĞòÊı×é
+	 * @param intArr å¾…æ’åºæ•°ç»„
 	 */
 	private static void selectionSort2(int[] intArr) {
 		int tail = intArr.length-1;

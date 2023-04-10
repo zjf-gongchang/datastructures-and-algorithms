@@ -3,16 +3,16 @@ package com.gongchang.dsaa.algorithm.sort;
 import java.util.Arrays;
 
 /**
- * ²åÈëÅÅĞò
+ * æ’å…¥æ’åº
  * 
- * ÅÅĞòÀàĞÍ£ºÄÚ²¿ÅÅĞò
+ * æ’åºç±»å‹ï¼šå†…éƒ¨æ’åº
  * 
- * ºËĞÄË¼Ïë£º
- * 	½«Êı×é·Ö³ÉÓĞĞòºÍÎŞĞòÁ½²¿·Ö£¬³õÊ¼×´Ì¬ÏÂ£ºÏÂ±ê0¶ÀÁ¢×÷ÎªÓĞĞòÊı×éµÄÒ»²¿·Ö£¬Ê£ÓÚµÄ²¿·Ö×÷ÎªÎŞĞòÊı×éµÄÒ»²¿·Ö
- * 	ÈôÓĞn¸öÔªËØ£¬Ôò½øĞĞn-1ÂÖÅÅĞò
- * 	Ã¿Ò»ÂÖ´ÓÎŞĞòÊı×éµÄÍ·²¿È¡Ò»¸öÔªËØ²åÈëµ½ÓĞĞòÊı×éÖĞ
+ * æ ¸å¿ƒæ€æƒ³ï¼š
+ * 	å°†æ•°ç»„åˆ†æˆæœ‰åºå’Œæ— åºä¸¤éƒ¨åˆ†ï¼Œåˆå§‹çŠ¶æ€ä¸‹ï¼šä¸‹æ ‡0ç‹¬ç«‹ä½œä¸ºæœ‰åºæ•°ç»„çš„ä¸€éƒ¨åˆ†ï¼Œå‰©äºçš„éƒ¨åˆ†ä½œä¸ºæ— åºæ•°ç»„çš„ä¸€éƒ¨åˆ†
+ * 	è‹¥æœ‰nä¸ªå…ƒç´ ï¼Œåˆ™è¿›è¡Œn-1è½®æ’åº
+ * 	æ¯ä¸€è½®ä»æ— åºæ•°ç»„çš„å¤´éƒ¨å–ä¸€ä¸ªå…ƒç´ æ’å…¥åˆ°æœ‰åºæ•°ç»„ä¸­
  * 
- * Ê±¼ä¸´ÔÓ¶È£ºO(n2)
+ * æ—¶é—´å¤æ‚åº¦ï¼šO(n2)
  * 
  * @author GongChang
  *
@@ -22,27 +22,27 @@ public class InsertionSort {
 	public static void main(String[] args) {
 		int[] intArr = {1,3,56,-2,-2,-78,332,-2,42};
 		
-		System.out.println("ÅÅĞòÇ°£º");
+		System.out.println("æ’åºå‰ï¼š");
 		System.out.println(Arrays.toString(intArr));
 		
 		insertionSort1(intArr);
 //		insertionSort2(intArr);
 		
-		System.out.println("ÅÅĞòºó£º");
+		System.out.println("æ’åºåï¼š");
 		System.out.println(Arrays.toString(intArr));
 	}
 	
 	/**
-	 * ½»»»·¨ÊµÏÖ²åÈëÅÅĞò
+	 * äº¤æ¢æ³•å®ç°æ’å…¥æ’åº
 	 * 
-	 * @param intArr ´ıÅÅĞòÊı×é
+	 * @param intArr å¾…æ’åºæ•°ç»„
 	 */
 	private static void insertionSort1(int[] intArr) {
 		int tail = intArr.length-1;
 		for(int i=1; i<=tail; i++){
 			for(int j=i; j-1>=0; j--) {
 				if(intArr[j]<intArr[j-1]) {
-					// ÏÂÃæÈıĞĞ´úÂëÌåÏÖÁË½»»»·¨µÄºËĞÄ
+					// ä¸‹é¢ä¸‰è¡Œä»£ç ä½“ç°äº†äº¤æ¢æ³•çš„æ ¸å¿ƒ
 					int temp = intArr[j];
 					intArr[j] = intArr[j-1];
 					intArr[j-1] = temp;
@@ -52,9 +52,9 @@ public class InsertionSort {
 	}
 	
 	/**
-	 * ÒÆ¶¯·¨ÊµÏÖ²åÈëÅÅĞò
+	 * ç§»åŠ¨æ³•å®ç°æ’å…¥æ’åº
 	 * 
-	 * @param intArr ´ıÅÅĞòÊı×é
+	 * @param intArr å¾…æ’åºæ•°ç»„
 	 */
 	private static void insertionSort2(int[] intArr) {
 		int tail = intArr.length-1;

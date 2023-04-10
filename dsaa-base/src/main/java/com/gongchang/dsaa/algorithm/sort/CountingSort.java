@@ -1,13 +1,13 @@
 package com.gongchang.dsaa.algorithm.sort;
 
 /**
- * ��������
+ * 计数排序
  * 
- * �������ͣ�
+ * 排序类型：
  * 
- * ����˼�룺
+ * 核心思想：
  * 
- * ʱ�临�Ӷȣ�
+ * 时间复杂度：
  * 
  * @author GongChang
  *

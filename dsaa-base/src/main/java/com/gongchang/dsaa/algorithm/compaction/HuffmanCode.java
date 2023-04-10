@@ -1,7 +1,7 @@
 package com.gongchang.dsaa.algorithm.compaction;
 
 /**
- * ¹ş·òÂü±àÂë
+ * å“ˆå¤«æ›¼ç¼–ç 
  * 
  * @author GongChang
  *

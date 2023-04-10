@@ -2,16 +2,16 @@ package com.gongchang.dsaa.datastructure.tree.binarytree;
 
 
 /**
- * ¶ş²æÊ÷
+ * äºŒå‰æ ‘
  * 
- * ¶ş²æÊ÷ÊÇº¬ÓĞÁ½¸ö×Ó½ÚµãµÄÊ÷
- * ½Úµã£¬¸ù½Úµã£¬¸¸½Úµã£¬×Ó½Úµã£¬Ò¶×Ó½Úµã£¬Â·¾¶£¬È¨£¬²ã£¬×ÓÊ÷£¬¸ß¶È£¨×î´ó²ãÊı£©£¬É­ÁÖ£¬½×
+ * äºŒå‰æ ‘æ˜¯å«æœ‰ä¸¤ä¸ªå­èŠ‚ç‚¹çš„æ ‘
+ * èŠ‚ç‚¹ï¼Œæ ¹èŠ‚ç‚¹ï¼Œçˆ¶èŠ‚ç‚¹ï¼Œå­èŠ‚ç‚¹ï¼Œå¶å­èŠ‚ç‚¹ï¼Œè·¯å¾„ï¼Œæƒï¼Œå±‚ï¼Œå­æ ‘ï¼Œé«˜åº¦ï¼ˆæœ€å¤§å±‚æ•°ï¼‰ï¼Œæ£®æ—ï¼Œé˜¶
  * 
- * Âú¶ş²æÊ÷£ºËùÓĞÒ¶×Ó½ÚµãÔÚ×îºóÒ»²ã£¬½ÚµãÊıÂú×ã2^n-1(nÎª²ãÊı)
- * ÍêÈ«¶ş²æÊ÷£ºÒ¶×Ó½ÚµãÔÚ×îºóÒ»²ãºÍµ¹ÊıµÚ¶ş²ã£¬µ¹ÊıµÚÒ»²ã×ó±ßÁ¬Ğø£¬µ¹ÊıµÚ¶ş²ãÓÒ±ßÁ¬Ğø
- * ÆäËû¶ş²æÊ÷ÔÚµ¥¶ÀµÄÀàÖĞ½éÉÜ
+ * æ»¡äºŒå‰æ ‘ï¼šæ‰€æœ‰å¶å­èŠ‚ç‚¹åœ¨æœ€åä¸€å±‚ï¼ŒèŠ‚ç‚¹æ•°æ»¡è¶³2^n-1(nä¸ºå±‚æ•°)
+ * å®Œå…¨äºŒå‰æ ‘ï¼šå¶å­èŠ‚ç‚¹åœ¨æœ€åä¸€å±‚å’Œå€’æ•°ç¬¬äºŒå±‚ï¼Œå€’æ•°ç¬¬ä¸€å±‚å·¦è¾¹è¿ç»­ï¼Œå€’æ•°ç¬¬äºŒå±‚å³è¾¹è¿ç»­
+ * å…¶ä»–äºŒå‰æ ‘åœ¨å•ç‹¬çš„ç±»ä¸­ä»‹ç»
  * 
- * ¶ş²æÊ÷Ò²¿ÉÒÔÊ¹ÓÃÊı×é´æ´¢£¬Èç¹ûiÊÇ¸¸½ÚµãµÄÏÂ±ê£¬Ôò2i+1ÊÇ×ó×Ó½Úµã£¬2i+2ÊÇÓÒ×Ó½Úµã
+ * äºŒå‰æ ‘ä¹Ÿå¯ä»¥ä½¿ç”¨æ•°ç»„å­˜å‚¨ï¼Œå¦‚æœiæ˜¯çˆ¶èŠ‚ç‚¹çš„ä¸‹æ ‡ï¼Œåˆ™2i+1æ˜¯å·¦å­èŠ‚ç‚¹ï¼Œ2i+2æ˜¯å³å­èŠ‚ç‚¹
  * 
  * @author GongChang
  *
@@ -22,20 +22,20 @@ public class BinaryTree {
 		BinaryTree binaryTree = new BinaryTree();
 		binaryTree.buildBinaryTree();
 		
-		System.out.println("Ç°Ğò±éÀú");
+		System.out.println("å‰åºéå†");
 		binaryTree.preOrderTraversal();
 		
-		System.out.println("ÖĞĞò±éÀú");
+		System.out.println("ä¸­åºéå†");
 		binaryTree.midOrderTraversal();
 		
-		System.out.println("ºóĞò±éÀú");
+		System.out.println("ååºéå†");
 		binaryTree.postOrderTraversal();
 		
-		System.out.println("Ç°Ğò²éÕÒ");
+		System.out.println("å‰åºæŸ¥æ‰¾");
 		System.out.println(binaryTree.preOrderSearch(3));;
-		System.out.println("ÖĞĞò²éÕÒ");
+		System.out.println("ä¸­åºæŸ¥æ‰¾");
 		System.out.println(binaryTree.midOrderSearch(3));;
-		System.out.println("ºóĞò²éÕÒ");
+		System.out.println("ååºæŸ¥æ‰¾");
 		System.out.println(binaryTree.postOrderSearch(1));;
 		
 	}
@@ -76,7 +76,7 @@ public class BinaryTree {
 	
 	public void preOrderTraversal() {
 		if(root==null) {
-			System.out.println("¶ş²æÊ÷Îª¿Õ£¬²»ÄÜ½øĞĞÇ°Ğò±éÀú");
+			System.out.println("äºŒå‰æ ‘ä¸ºç©ºï¼Œä¸èƒ½è¿›è¡Œå‰åºéå†");
 		}else {
 			root.preOrderTraversal();
 		}
@@ -84,7 +84,7 @@ public class BinaryTree {
 	
 	public void midOrderTraversal() {
 		if(root==null) {
-			System.out.println("¶ş²æÊ÷Îª¿Õ£¬²»ÄÜ½øĞĞÖĞĞò±éÀú");
+			System.out.println("äºŒå‰æ ‘ä¸ºç©ºï¼Œä¸èƒ½è¿›è¡Œä¸­åºéå†");
 		}else {
 			root.midOrderTraversal();
 		}
@@ -92,7 +92,7 @@ public class BinaryTree {
 	
 	public void postOrderTraversal() {
 		if(root==null) {
-			System.out.println("¶ş²æÊ÷Îª¿Õ£¬²»ÄÜ½øĞĞºóĞò±éÀú");
+			System.out.println("äºŒå‰æ ‘ä¸ºç©ºï¼Œä¸èƒ½è¿›è¡Œååºéå†");
 		}else {
 			root.postOrderTraversal();
 		}
@@ -100,7 +100,7 @@ public class BinaryTree {
 	
 	public Node preOrderSearch(int findValue){
 		if(root==null) {
-			System.out.println("¶ş²æÊ÷Îª¿Õ£¬²»ÄÜ½øĞĞÇ°Ğò²éÕÒ");
+			System.out.println("äºŒå‰æ ‘ä¸ºç©ºï¼Œä¸èƒ½è¿›è¡Œå‰åºæŸ¥æ‰¾");
 			return null;
 		}else {
 			return root.preOrderSearch(findValue);
@@ -110,7 +110,7 @@ public class BinaryTree {
 	
 	public Node midOrderSearch(int findValue){
 		if(root==null) {
-			System.out.println("¶ş²æÊ÷Îª¿Õ£¬²»ÄÜ½øĞĞÖĞĞò²éÕÒ");
+			System.out.println("äºŒå‰æ ‘ä¸ºç©ºï¼Œä¸èƒ½è¿›è¡Œä¸­åºæŸ¥æ‰¾");
 			return null;
 		}else {
 			return root.midOrderSearch(findValue);
@@ -120,7 +120,7 @@ public class BinaryTree {
 	
 	public Node postOrderSearch(int findValue){
 		if(root==null) {
-			System.out.println("¶ş²æÊ÷Îª¿Õ£¬²»ÄÜ½øĞĞºóĞò²éÕÒ");
+			System.out.println("äºŒå‰æ ‘ä¸ºç©ºï¼Œä¸èƒ½è¿›è¡ŒååºæŸ¥æ‰¾");
 			return null;
 		}else {
 			return root.postOrderSearch(findValue);

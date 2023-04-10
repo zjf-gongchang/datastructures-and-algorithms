@@ -1,7 +1,7 @@
 package com.gongchang.dsaa.datastructure.lineartables.array;
 
 /**
- * Ò»Î¬Êý×é
+ * ä¸€ç»´æ•°ç»„
  * 
  * @author GongChang
  *

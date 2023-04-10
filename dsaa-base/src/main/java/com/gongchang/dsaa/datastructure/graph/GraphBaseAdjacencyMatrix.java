@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * »ùÓÚÁÚ½Ó¾ØÕóÊµÏÖÍ¼
+ * åŸºäºé‚»æ¥çŸ©é˜µå®ç°å›¾
  * 
  * @author GongChang
  *
@@ -17,17 +17,17 @@ public class GraphBaseAdjacencyMatrix {
 		GraphBaseAdjacencyMatrix gbam = new GraphBaseAdjacencyMatrix(10);
 		gbam.buildGraph();
 		
-		System.out.println("==============================Í¼½á¹¹´òÓ¡");
+		System.out.println("==============================å›¾ç»“æ„æ‰“å°");
 		gbam.showGrpah();
-		System.out.println("==============================Í¼½á¹¹´òÓ¡");
+		System.out.println("==============================å›¾ç»“æ„æ‰“å°");
 		
-		System.out.println("==============================dfs±éÀú");
+		System.out.println("==============================dfséå†");
 		gbam.dfs();
-		System.out.println("==============================dfs±éÀú");
+		System.out.println("==============================dfséå†");
 		
-		System.out.println("==============================bfs±éÀú");
+		System.out.println("==============================bfséå†");
 		gbam.bfs();
-		System.out.println("==============================bfs±éÀú");
+		System.out.println("==============================bfséå†");
 	}
 	
 	private void buildGraph() {
@@ -110,7 +110,7 @@ public class GraphBaseAdjacencyMatrix {
 	private void dfs(int index, int[] isvisited) {
 		nodeList.get(index).printNodeInfo();
 		isvisited[index]=1;
-		// ÏÂÃæÊÇÉî¶ÈÓÅÏÈµÄÌåÏÖ£¬ÕÒµ½µ±Ç°½ÚµãµÄµÚÒ»¸öÎ´·ÃÎÊµÄÁÚ½Ó½Úµã£¬µİ¹é½øÈ¥×öÉÏÃæµÄÖØ¸´²Ù×÷£¨·ÃÎÊºÍ±êÊ¶£©
+		// ä¸‹é¢æ˜¯æ·±åº¦ä¼˜å…ˆçš„ä½“ç°ï¼Œæ‰¾åˆ°å½“å‰èŠ‚ç‚¹çš„ç¬¬ä¸€ä¸ªæœªè®¿é—®çš„é‚»æ¥èŠ‚ç‚¹ï¼Œé€’å½’è¿›å»åšä¸Šé¢çš„é‡å¤æ“ä½œï¼ˆè®¿é—®å’Œæ ‡è¯†ï¼‰
 		int neighborNodeIndex = getNextNeighborNodeIndex(index, 0);
 		while(neighborNodeIndex!=-1) {
 			if(isvisited[neighborNodeIndex]!=1) {
@@ -134,7 +134,7 @@ public class GraphBaseAdjacencyMatrix {
 		isvisited[index]=1;
 		LinkedBlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
 		queue.add(index);
-		// ÏÂÃæÊÇ¿í¶ÈÓÅÏÈ±éÀúµÄÌåÏÖ£¬Ã¿´Î´Ó¶ÓÁĞÖĞÈ¡³öÒ»¸ö½ÚµãÖ®ºó£¬¶¼»á°ÑÕâ¸ö½ÚµãµÄËùÓĞÁÚ½Ó½Úµã¶¼·ÃÎÊÍê£¬ÔÙÈ¥´Ó¶ÓÁĞÖĞÈ¡ÏÂÒ»¸ö½Úµã
+		// ä¸‹é¢æ˜¯å®½åº¦ä¼˜å…ˆéå†çš„ä½“ç°ï¼Œæ¯æ¬¡ä»é˜Ÿåˆ—ä¸­å–å‡ºä¸€ä¸ªèŠ‚ç‚¹ä¹‹åï¼Œéƒ½ä¼šæŠŠè¿™ä¸ªèŠ‚ç‚¹çš„æ‰€æœ‰é‚»æ¥èŠ‚ç‚¹éƒ½è®¿é—®å®Œï¼Œå†å»ä»é˜Ÿåˆ—ä¸­å–ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 		int curNodeIndex;
 		int neighborNodeIndex;
 		while(queue.size()>0) {

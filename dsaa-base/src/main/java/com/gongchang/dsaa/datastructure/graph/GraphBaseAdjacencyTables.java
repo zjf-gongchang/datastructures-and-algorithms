@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 
 /**
- * »ùÓÚÁÚ½Ó±íÊµÏÖÍ¼
+ * åŸºäºé‚»æ¥è¡¨å®ç°å›¾
  * 
  * @author GongChang
  *
@@ -17,17 +17,17 @@ public class GraphBaseAdjacencyTables {
 		GraphBaseAdjacencyTables gbam = new GraphBaseAdjacencyTables();
 		gbam.buildGraph();
 		
-		System.out.println("==============================Í¼½á¹¹´òÓ¡");
+		System.out.println("==============================å›¾ç»“æ„æ‰“å°");
 		gbam.showGrpah();
-		System.out.println("==============================Í¼½á¹¹´òÓ¡");
+		System.out.println("==============================å›¾ç»“æ„æ‰“å°");
 		
-		System.out.println("==============================dfs±éÀú");
+		System.out.println("==============================dfséå†");
 		gbam.dfs();
-		System.out.println("==============================dfs±éÀú");
+		System.out.println("==============================dfséå†");
 		
-		System.out.println("==============================bfs±éÀú");
+		System.out.println("==============================bfséå†");
 		gbam.bfs();
-		System.out.println("==============================bfs±éÀú");
+		System.out.println("==============================bfséå†");
 	}
 	
 	private void buildGraph() {
@@ -86,9 +86,9 @@ public class GraphBaseAdjacencyTables {
 	}
 	
 	private void dfs(int nodeIndex, Boolean[] isvisited) {
-		// ·ÃÎÊ
+		// è®¿é—®
 		nodeList.get(nodeIndex).printNodeInfo();
-		// ±êÊ¶
+		// æ ‡è¯†
 		isvisited[nodeIndex] = true;
 		Point nextNeighborNodePoint = pointList.get(nodeIndex).getNext();
 		while(nextNeighborNodePoint!=null) {
@@ -112,11 +112,11 @@ public class GraphBaseAdjacencyTables {
 	}
 	
 	private void bfs(int nodeIndex, Boolean[] isvisited) {
-		// ·ÃÎÊ
+		// è®¿é—®
 		nodeList.get(nodeIndex).printNodeInfo();
-		// ±êÊ¶
+		// æ ‡è¯†
 		isvisited[nodeIndex] = true;
-		// Èë¶ÓÁĞ
+		// å…¥é˜Ÿåˆ—
 		LinkedBlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
 		queue.add(nodeIndex);
 		

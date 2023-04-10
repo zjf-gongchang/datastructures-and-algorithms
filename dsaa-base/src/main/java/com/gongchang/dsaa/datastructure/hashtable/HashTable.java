@@ -1,7 +1,7 @@
 package com.gongchang.dsaa.datastructure.hashtable;
 
 /**
- * ¹þÏ£±í
+ * å“ˆå¸Œè¡¨
  * 
  * @author GongChang
  *

@@ -1,7 +1,7 @@
 package com.gongchang.dsaa.datastructure.lineartables.array;
 
 /**
- * 环形数组
+ * 鐜舰鏁扮粍
  * 
  * @author GongChang
  *

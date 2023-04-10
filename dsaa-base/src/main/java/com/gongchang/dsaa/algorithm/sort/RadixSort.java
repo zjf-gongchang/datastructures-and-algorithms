@@ -3,18 +3,18 @@ package com.gongchang.dsaa.algorithm.sort;
 import java.util.Arrays;
 
 /**
- * »ùÊıÅÅĞò
+ * åŸºæ•°æ’åº
  * 
- * ÅÅĞòÀàĞÍ£ºÄÚ²¿ÅÅĞò
+ * æ’åºç±»å‹ï¼šå†…éƒ¨æ’åº
  * 
- * ºËĞÄË¼Ïë£º
- * 	È¡Êı×éÖĞ×î´óÖµµÄ³¤¶È£¨maxLength£©×÷ÎªÊı×éÖĞËùÓĞÊıµÄ³¤¶È£¬Î»Êı²»¹»µÄÇ°Ãæ²¹0£»
- * 	´Ó¸öÎ»¿ªÊ¼±éÀú£¬Ö±µ½¸ßÎ»½áÊø,Ò»¹²±éÀúmaxLength´Î£»
- * 	Ã¿´Î±éÀúÖĞ£º
- * 		Ñ­»·Õû¸öÊı×é£¬È¡³öÃ¿¸öÔªËØ¶ÔÓ¦Î»ÖÃÉÏµÄÖµ¶ÔÍ°µÄ¸öÊıÈ¡Óà£¬µÃµ½Í°µÄË÷Òı£¬È»ºó½«ÔªËØ·Åµ½Í°Àï
- * 		Êı×éÑ­»·Íê³ÉÖ®ºóÔÙ½«Í°ÀïµÄÔªËØ·Å»ØÔ­Êı×é
+ * æ ¸å¿ƒæ€æƒ³ï¼š
+ * 	å–æ•°ç»„ä¸­æœ€å¤§å€¼çš„é•¿åº¦ï¼ˆmaxLengthï¼‰ä½œä¸ºæ•°ç»„ä¸­æ‰€æœ‰æ•°çš„é•¿åº¦ï¼Œä½æ•°ä¸å¤Ÿçš„å‰é¢è¡¥0ï¼›
+ * 	ä»ä¸ªä½å¼€å§‹éå†ï¼Œç›´åˆ°é«˜ä½ç»“æŸ,ä¸€å…±éå†maxLengthæ¬¡ï¼›
+ * 	æ¯æ¬¡éå†ä¸­ï¼š
+ * 		å¾ªç¯æ•´ä¸ªæ•°ç»„ï¼Œå–å‡ºæ¯ä¸ªå…ƒç´ å¯¹åº”ä½ç½®ä¸Šçš„å€¼å¯¹æ¡¶çš„ä¸ªæ•°å–ä½™ï¼Œå¾—åˆ°æ¡¶çš„ç´¢å¼•ï¼Œç„¶åå°†å…ƒç´ æ”¾åˆ°æ¡¶é‡Œ
+ * 		æ•°ç»„å¾ªç¯å®Œæˆä¹‹åå†å°†æ¡¶é‡Œçš„å…ƒç´ æ”¾å›åŸæ•°ç»„
  * 
- * Ê±¼ä¸´ÔÓ¶È£»O(n*k)£¬kÎªÍ°µÄ¸öÊı
+ * æ—¶é—´å¤æ‚åº¦ï¼›O(n*k)ï¼Œkä¸ºæ¡¶çš„ä¸ªæ•°
  * 
  * @author GongChang
  *
@@ -24,37 +24,37 @@ public class RadixSort {
 	public static void main(String[] args) {
 		int[] intArr = {1,3,56,2,2,78,332,2,42};
 		
-		System.out.println("ÅÅĞòÇ°£º");
+		System.out.println("æ’åºå‰ï¼š");
 		System.out.println(Arrays.toString(intArr));
 		
 		int[] temp = new int[intArr.length];
 		radixSort(intArr);
 		
-		System.out.println("ÅÅĞòºó£º");
+		System.out.println("æ’åºåï¼š");
 		System.out.println(Arrays.toString(intArr));
 	}
 	
 	private static void radixSort(int[] intArr) {
-		// ÕÒµ½Êı×éÖĞ×î´óµÄÖµ
+		// æ‰¾åˆ°æ•°ç»„ä¸­æœ€å¤§çš„å€¼
 		int max = intArr[0];
 		for(int i=1; i<intArr.length; i++) {
 			if(intArr[i]>max) {
 				max=intArr[i];
 			}
 		}
-		// ´´½¨Í°
+		// åˆ›å»ºæ¡¶
 		int[][] bucket = new int[10][intArr.length];
 		int[] bucketEleCount = new int[10];
-		// »ñÈ¡×î´óÖµµÄ³¤¶È
+		// è·å–æœ€å¤§å€¼çš„é•¿åº¦
 		int maxLength=(max+"").length();
-		// ÅÅĞò²Ù×÷
+		// æ’åºæ“ä½œ
 		for(int i=0,m=1; i<maxLength; i++,m*=10){
-			// ·ÖÍ°
+			// åˆ†æ¡¶
 			for(int j=0; j<intArr.length; j++) {
 				int bucketIndex = intArr[j]/m%10;
 				bucket[bucketIndex][bucketEleCount[bucketIndex]++] = intArr[j];
 			}
-			// ¸´ÖÆµ½Ô­Êı×é
+			// å¤åˆ¶åˆ°åŸæ•°ç»„
 			int intArrIndex=0;
 			for(int j=0; j<bucket.length; j++){
 				if(bucketEleCount[j]>0) {

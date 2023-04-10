@@ -3,18 +3,18 @@ package com.gongchang.dsaa.algorithm.sort;
 import java.util.Arrays;
 
 /**
- * ��������
+ * 快速排序
  * 
- * �������ͣ��ڲ�����
+ * 排序类型：内部排序
  * 
- * ����˼�룺
- * 	��һ������ͨ��һ���м�λ�õ�ֵmidValue�ֳ����������֣�����ν���
- * 	ÿ�ν����Ǵ���߲��ֵ������ҵ�һ�����ڵ���midValue��ֵ�����ұ߲��ֵ������ҵ�һ��С�ڵ���midValue��ֵ�����ҵ�������ֵ����
- * 	������ν���֮��midValue��ߵĶ��Ǵ��ڵ�������ֵ��midValue�ұߵĶ���С�ڵ�������ֵ
+ * 核心思想：
+ * 	将一个数组通过一个中间位置的值midValue分成左右两部分，做多次交换
+ * 	每次交换是从左边部分的数组找到一个大于等于midValue的值，从右边部分的数组找到一个小于等于midValue的值，将找到的两个值交换
+ * 	这样多次交换之后，midValue左边的都是大于等于它的值，midValue右边的都是小于等于它的值
  * 
- * 	Ȼ����������������ֱ���Ϊ�µ��������ִ������Ĳ�����֪�����鲻���ٷ�
+ * 	然后将左右两部分数组分别作为新的数组继续执行上面的操作，知道数组不可再分
  * 
- * ʱ�临�Ӷȣ�O(n2)
+ * 时间复杂度：O(n2)
  * 
  * @author GongChang
  *
@@ -24,12 +24,12 @@ public class QuickSort {
 	public static void main(String[] args) {
 		int[] intArr = {1,3,56,-2,-2,-78,332,-2,42};
 		
-		System.out.println("����ǰ��");
+		System.out.println("排序前：");
 		System.out.println(Arrays.toString(intArr));
 		
 		quickSort1(intArr, 0, intArr.length-1);
 		
-		System.out.println("�����");
+		System.out.println("排序后：");
 		System.out.println(Arrays.toString(intArr));
 	}
 	

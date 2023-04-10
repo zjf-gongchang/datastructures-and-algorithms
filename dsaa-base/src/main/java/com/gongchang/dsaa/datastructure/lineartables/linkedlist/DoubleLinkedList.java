@@ -1,7 +1,7 @@
 package com.gongchang.dsaa.datastructure.lineartables.linkedlist;
 
 /**
- * Ë«Á´±í
+ * åŒé“¾è¡¨
  * 
  * @author GongChang
  *

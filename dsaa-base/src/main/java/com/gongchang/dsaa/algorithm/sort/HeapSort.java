@@ -3,16 +3,16 @@ package com.gongchang.dsaa.algorithm.sort;
 import java.util.Arrays;
 
 /**
- * ¶ÑÅÅĞò
+ * å †æ’åº
  * 
- * ÅÅĞòÀàĞÍ£ºÄÚ²¿ÅÅĞò
+ * æ’åºç±»å‹ï¼šå†…éƒ¨æ’åº
  * 
- * ºËĞÄË¼Ïë£º
- * 	Ñ­»·n´Î£¬Ã¿´Î¹¹½¨Ò»¸ö¶Ñ£¬È»ºó½«¶Ñ¶¥µÄÔªËØºÍÎ²²¿Î´²ÎÓëÅÅĞòµÄÔªËØ½»»»
- * 	´Ó´óµ½Ğ¡ÅÅĞò¾Í¹¹½¨´ó¶¥¶Ñ£¬Ã¿´Î½«¶Ñ¶¥µÄÔªËØÍùºóÒÆ¶¯
- * 	´ÓĞ¡µ½´óÅÅĞò¾Í¹¹½¨Ğ¡¶¥¶Ñ£¬Ã¿´Î½«¶Ñ¶¥µÄÔªËØÍùºóÒÆ¶¯
+ * æ ¸å¿ƒæ€æƒ³ï¼š
+ * 	å¾ªç¯næ¬¡ï¼Œæ¯æ¬¡æ„å»ºä¸€ä¸ªå †ï¼Œç„¶åå°†å †é¡¶çš„å…ƒç´ å’Œå°¾éƒ¨æœªå‚ä¸æ’åºçš„å…ƒç´ äº¤æ¢
+ * 	ä»å¤§åˆ°å°æ’åºå°±æ„å»ºå¤§é¡¶å †ï¼Œæ¯æ¬¡å°†å †é¡¶çš„å…ƒç´ å¾€åç§»åŠ¨
+ * 	ä»å°åˆ°å¤§æ’åºå°±æ„å»ºå°é¡¶å †ï¼Œæ¯æ¬¡å°†å †é¡¶çš„å…ƒç´ å¾€åç§»åŠ¨
  * 
- * Ê±¼ä¸´ÔÓ¶È£ºO(nlogn)
+ * æ—¶é—´å¤æ‚åº¦ï¼šO(nlogn)
  * 
  * @author GongChang
  *
@@ -21,25 +21,25 @@ public class HeapSort {
 
 	public static void main(String[] args) {
 		int[] intArr = {1,5,2,7,8};
-		System.out.println("=======================Ô­Êı×é");
+		System.out.println("=======================åŸæ•°ç»„");
 		System.out.println(Arrays.toString(intArr));
 		
 		HeapSort heapSort = new HeapSort();
 		
 		heapSort.heapSort(intArr, true);
-		System.out.println("=======================´Ó´óµ½Ğ¡ÅÅĞò");
+		System.out.println("=======================ä»å¤§åˆ°å°æ’åº");
 		System.out.println(Arrays.toString(intArr));
 		
 		heapSort.heapSort(intArr, false);
-		System.out.println("=======================´ÓĞ¡µ½´óÅÅĞò");
+		System.out.println("=======================ä»å°åˆ°å¤§æ’åº");
 		System.out.println(Arrays.toString(intArr));
 	}
 	
 	/**
-	 * ¶ÑÅÅĞò·½·¨
+	 * å †æ’åºæ–¹æ³•
 	 * 
-	 * @param intArr ´ıÅÅĞòÊı×é
-	 * @param bool true-´Ó´óµ½Ğ¡£¬ false-´ÓĞ¡µ½´ó
+	 * @param intArr å¾…æ’åºæ•°ç»„
+	 * @param bool true-ä»å¤§åˆ°å°ï¼Œ false-ä»å°åˆ°å¤§
 	 */
 	private void heapSort(int[] intArr, Boolean bool) {
 		if(bool) {
@@ -71,11 +71,11 @@ public class HeapSort {
 	private void buildBigTopHeap(int[] intArr, int startIndex, int arrLength) {
 		int temp = intArr[startIndex];
 		for(int m=2*startIndex+1; m<arrLength; m=2*m+1) {
-			// ±È½Ï×óÓÒ½ÚµãµÄ´óĞ¡£¬Ñ¡³ö½Ï´óµÄ
+			// æ¯”è¾ƒå·¦å³èŠ‚ç‚¹çš„å¤§å°ï¼Œé€‰å‡ºè¾ƒå¤§çš„
 			if(m+1<arrLength&&intArr[m]<intArr[m+1]) {
 				m=m+1;
 			}
-			// Óë½øÈë¸Ã·½·¨Ê±×î¶¥¶ËµÄÖµ±È½Ï£¬Èô´óÔòÍùÉÏÒÆ£¬ÈôĞ¡ÓÚµÈÓÚÔòËµÃ÷ÕÒµ½ÁË¶¥¶ËÖµµÄÕæÊµÎ»ÖÃ£¬Ìø³öÑ­»·
+			// ä¸è¿›å…¥è¯¥æ–¹æ³•æ—¶æœ€é¡¶ç«¯çš„å€¼æ¯”è¾ƒï¼Œè‹¥å¤§åˆ™å¾€ä¸Šç§»ï¼Œè‹¥å°äºç­‰äºåˆ™è¯´æ˜æ‰¾åˆ°äº†é¡¶ç«¯å€¼çš„çœŸå®ä½ç½®ï¼Œè·³å‡ºå¾ªç¯
 			if(temp<intArr[m]) {
 				intArr[startIndex] = intArr[m];
 				startIndex = m;
@@ -83,7 +83,7 @@ public class HeapSort {
 				break;
 			}
 		}
-		// ½«¶¥¶ËµÄÖµ¸´ÖÆµ½ÕıÈ·µÄÎ»ÖÃÉÏ
+		// å°†é¡¶ç«¯çš„å€¼å¤åˆ¶åˆ°æ­£ç¡®çš„ä½ç½®ä¸Š
 		intArr[startIndex] = temp;
 	}
 	
@@ -97,11 +97,11 @@ public class HeapSort {
 	private void buildSmallTopHeap(int[] intArr, int startIndex, int arrLength) {
 		int temp = intArr[startIndex];
 		for(int m=2*startIndex+1; m<arrLength; m=2*m+1) {
-			// ±È½Ï×óÓÒ½ÚµãµÄ´óĞ¡£¬Ñ¡³ö½ÏĞ¡µÄ
+			// æ¯”è¾ƒå·¦å³èŠ‚ç‚¹çš„å¤§å°ï¼Œé€‰å‡ºè¾ƒå°çš„
 			if(m+1<arrLength&&intArr[m]>intArr[m+1]) {
 				m=m+1;
 			}
-			// Óë½øÈë¸Ã·½·¨Ê±×î¶¥¶ËµÄÖµ±È½Ï£¬ÈôĞ¡ÔòÍùÉÏÒÆ£¬Èô´óÓÚµÈÓÚÔòËµÃ÷ÕÒµ½ÁË¶¥¶ËÖµµÄÕæÊµÎ»ÖÃ£¬Ìø³öÑ­»·
+			// ä¸è¿›å…¥è¯¥æ–¹æ³•æ—¶æœ€é¡¶ç«¯çš„å€¼æ¯”è¾ƒï¼Œè‹¥å°åˆ™å¾€ä¸Šç§»ï¼Œè‹¥å¤§äºç­‰äºåˆ™è¯´æ˜æ‰¾åˆ°äº†é¡¶ç«¯å€¼çš„çœŸå®ä½ç½®ï¼Œè·³å‡ºå¾ªç¯
 			if(temp>intArr[m]) {
 				intArr[startIndex] = intArr[m];
 				startIndex = m;
@@ -109,7 +109,7 @@ public class HeapSort {
 				break;
 			}
 		}
-		// ½«¶¥¶ËµÄÖµ¸´ÖÆµ½ÕıÈ·µÄÎ»ÖÃÉÏ
+		// å°†é¡¶ç«¯çš„å€¼å¤åˆ¶åˆ°æ­£ç¡®çš„ä½ç½®ä¸Š
 		intArr[startIndex] = temp;
 	}
 	

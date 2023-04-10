@@ -3,16 +3,16 @@ package com.gongchang.dsaa.datastructure.tree.binarytree;
 import java.util.Arrays;
 
 /**
- * ¶ş²æÊ÷ÊÇ¿ÉÒÔÊ¹ÓÃÊı×éÀ´±íÊ¾µÄ£¬Ò»¿Å¶ş²æÊ÷°´ÕÕ´ÓÉÏµ½ÏÂ£¬´Ó×óµ½ÓÒµÄË³Ğò±êÊ¶ÔÚÊı×éÖĞµÄË÷Òı£¬ÄÇÃ´Âú×ãÈçÏÂ¹æÔò£º
- * ¸¸½ÚµãµÄË÷ÒıÎªiÊ±£¬×ó×Ó½ÚµãµÄË÷ÒıÊÇ£º2*i+1£¬ÓÒ×Ó½ÚµãµÄË÷ÒıÊÇ£º2*i+2
- * ×¢£ºË÷ÒıÏÂ±ê´Ó0¿ªÊ¼¼ÆÊı
+ * äºŒå‰æ ‘æ˜¯å¯ä»¥ä½¿ç”¨æ•°ç»„æ¥è¡¨ç¤ºçš„ï¼Œä¸€é¢—äºŒå‰æ ‘æŒ‰ç…§ä»ä¸Šåˆ°ä¸‹ï¼Œä»å·¦åˆ°å³çš„é¡ºåºæ ‡è¯†åœ¨æ•°ç»„ä¸­çš„ç´¢å¼•ï¼Œé‚£ä¹ˆæ»¡è¶³å¦‚ä¸‹è§„åˆ™ï¼š
+ * çˆ¶èŠ‚ç‚¹çš„ç´¢å¼•ä¸ºiæ—¶ï¼Œå·¦å­èŠ‚ç‚¹çš„ç´¢å¼•æ˜¯ï¼š2*i+1ï¼Œå³å­èŠ‚ç‚¹çš„ç´¢å¼•æ˜¯ï¼š2*i+2
+ * æ³¨ï¼šç´¢å¼•ä¸‹æ ‡ä»0å¼€å§‹è®¡æ•°
  * 
- * ¶ÑÊÇÒ»¿ÅÍêÈ«¶ş²æÊ÷
+ * å †æ˜¯ä¸€é¢—å®Œå…¨äºŒå‰æ ‘
  * 
- * ¶Ñ¹¹½¨Âß¼­£º´Ó×îºóÒ»¸ö·ÇÒ¶×Ó½Úµã¿ªÊ¼£¬×ÔÓÒÏò×ó£¬×ÔÏÂ¶øÉÏ£¬×îºóÒ»¸ö·ÇÒ¶×Ó½ÚµãµÄÏÂ±êÊÇ£ºintArr.length/2-1
+ * å †æ„å»ºé€»è¾‘ï¼šä»æœ€åä¸€ä¸ªéå¶å­èŠ‚ç‚¹å¼€å§‹ï¼Œè‡ªå³å‘å·¦ï¼Œè‡ªä¸‹è€Œä¸Šï¼Œæœ€åä¸€ä¸ªéå¶å­èŠ‚ç‚¹çš„ä¸‹æ ‡æ˜¯ï¼šintArr.length/2-1
  * 
- * ´ó¶¥¶Ñ£º¸¸½ÚµãµÄÖµ´óÓÚµÈÓÚ×Ó½ÚµãµÄÖµ
- * Ğ¡¶¥¶Ñ£º¸¸½ÚµãµÄÖµĞ¡ÓÚµÈÓÚ×Ó½ÚµãµÄÖµ
+ * å¤§é¡¶å †ï¼šçˆ¶èŠ‚ç‚¹çš„å€¼å¤§äºç­‰äºå­èŠ‚ç‚¹çš„å€¼
+ * å°é¡¶å †ï¼šçˆ¶èŠ‚ç‚¹çš„å€¼å°äºç­‰äºå­èŠ‚ç‚¹çš„å€¼
  * 
  * 
  * @author GongChang
@@ -22,17 +22,17 @@ public class Heap {
 
 	public static void main(String[] args) {
 		int[] intArr = {1,5,2,7,8};
-		System.out.println("=======================Ô­Êı×é");
+		System.out.println("=======================åŸæ•°ç»„");
 		System.out.println(Arrays.toString(intArr));
 		
 		Heap bigOrSmallTopHeap = new Heap();
 		
 		bigOrSmallTopHeap.buildBigTopHeap(intArr);
-		System.out.println("=======================´ó¶¥¶Ñ");
+		System.out.println("=======================å¤§é¡¶å †");
 		System.out.println(Arrays.toString(intArr));
 		
 		bigOrSmallTopHeap.buildSmallTopHeap(intArr);
-		System.out.println("=======================Ğ¡¶¥¶Ñ");
+		System.out.println("=======================å°é¡¶å †");
 		System.out.println(Arrays.toString(intArr));
 	}
 	
@@ -47,11 +47,11 @@ public class Heap {
 	private void buildBigTopHeap(int[] intArr, int startIndex, int arrLength) {
 		int temp = intArr[startIndex];
 		for(int m=2*startIndex+1; m<arrLength; m=2*m+1) {
-			// ±È½Ï×óÓÒ½ÚµãµÄ´óĞ¡£¬Ñ¡³ö½Ï´óµÄ
+			// æ¯”è¾ƒå·¦å³èŠ‚ç‚¹çš„å¤§å°ï¼Œé€‰å‡ºè¾ƒå¤§çš„
 			if(m+1<arrLength&&intArr[m]<intArr[m+1]) {
 				m=m+1;
 			}
-			// Óë½øÈë¸Ã·½·¨Ê±×î¶¥¶ËµÄÖµ±È½Ï£¬Èô´óÔòÍùÉÏÒÆ£¬ÈôĞ¡ÓÚµÈÓÚÔòËµÃ÷ÕÒµ½ÁË¶¥¶ËÖµµÄÕæÊµÎ»ÖÃ£¬Ìø³öÑ­»·
+			// ä¸è¿›å…¥è¯¥æ–¹æ³•æ—¶æœ€é¡¶ç«¯çš„å€¼æ¯”è¾ƒï¼Œè‹¥å¤§åˆ™å¾€ä¸Šç§»ï¼Œè‹¥å°äºç­‰äºåˆ™è¯´æ˜æ‰¾åˆ°äº†é¡¶ç«¯å€¼çš„çœŸå®ä½ç½®ï¼Œè·³å‡ºå¾ªç¯
 			if(temp<intArr[m]) {
 				intArr[startIndex] = intArr[m];
 				startIndex = m;
@@ -59,7 +59,7 @@ public class Heap {
 				break;
 			}
 		}
-		// ½«¶¥¶ËµÄÖµ¸´ÖÆµ½ÕıÈ·µÄÎ»ÖÃÉÏ
+		// å°†é¡¶ç«¯çš„å€¼å¤åˆ¶åˆ°æ­£ç¡®çš„ä½ç½®ä¸Š
 		intArr[startIndex] = temp;
 	}
 	
@@ -73,11 +73,11 @@ public class Heap {
 	private void buildSmallTopHeap(int[] intArr, int startIndex, int arrLength) {
 		int temp = intArr[startIndex];
 		for(int m=2*startIndex+1; m<arrLength; m=2*m+1) {
-			// ±È½Ï×óÓÒ½ÚµãµÄ´óĞ¡£¬Ñ¡³ö½ÏĞ¡µÄ
+			// æ¯”è¾ƒå·¦å³èŠ‚ç‚¹çš„å¤§å°ï¼Œé€‰å‡ºè¾ƒå°çš„
 			if(m+1<arrLength&&intArr[m]>intArr[m+1]) {
 				m=m+1;
 			}
-			// Óë½øÈë¸Ã·½·¨Ê±×î¶¥¶ËµÄÖµ±È½Ï£¬ÈôĞ¡ÔòÍùÉÏÒÆ£¬Èô´óÓÚµÈÓÚÔòËµÃ÷ÕÒµ½ÁË¶¥¶ËÖµµÄÕæÊµÎ»ÖÃ£¬Ìø³öÑ­»·
+			// ä¸è¿›å…¥è¯¥æ–¹æ³•æ—¶æœ€é¡¶ç«¯çš„å€¼æ¯”è¾ƒï¼Œè‹¥å°åˆ™å¾€ä¸Šç§»ï¼Œè‹¥å¤§äºç­‰äºåˆ™è¯´æ˜æ‰¾åˆ°äº†é¡¶ç«¯å€¼çš„çœŸå®ä½ç½®ï¼Œè·³å‡ºå¾ªç¯
 			if(temp>intArr[m]) {
 				intArr[startIndex] = intArr[m];
 				startIndex = m;
@@ -85,7 +85,7 @@ public class Heap {
 				break;
 			}
 		}
-		// ½«¶¥¶ËµÄÖµ¸´ÖÆµ½ÕıÈ·µÄÎ»ÖÃÉÏ
+		// å°†é¡¶ç«¯çš„å€¼å¤åˆ¶åˆ°æ­£ç¡®çš„ä½ç½®ä¸Š
 		intArr[startIndex] = temp;
 	}
 	

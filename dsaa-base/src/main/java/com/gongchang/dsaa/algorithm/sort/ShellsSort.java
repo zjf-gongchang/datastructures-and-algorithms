@@ -3,17 +3,17 @@ package com.gongchang.dsaa.algorithm.sort;
 import java.util.Arrays;
 
 /**
- * Ï£¶ûÅÅÐò£¬ÓÖ½Ð×öËõÐ¡ÔöÁ¿ÅÅÐò
+ * å¸Œå°”æŽ’åºï¼Œåˆå«åšç¼©å°å¢žé‡æŽ’åº
  * 
- * ÅÅÐòÀàÐÍ£ºÄÚ²¿ÅÅÐò
+ * æŽ’åºç±»åž‹ï¼šå†…éƒ¨æŽ’åº
  * 
- * ºËÐÄË¼Ïë£º
- * 	½â¾öÖ±½Ó²åÈëÅÅÐòÖÐÈç¹û×îÐ¡ÖµÔÚºóÃæ£¬ÒÆ¶¯´ÎÊý¶àµÄÎÊÌâ¡£
- * 	±ÈÈç£ºÊý×éarr = {2,3,4,5,6,7,8,9,1}£»
- * 	Ä³Ò»Ê±¿ÌµÄÓÐÐò±í°üº¬23456789£¬ÎÞÐò±íÖÐÊÇ1£¬ÕâÊÇÐèÒª½«ÎÞÐò±íÖÐµÄ1²åÈëµ½ÓÐÐò±íÖÐ£¬ÓÐÐò±íµÄÒÆ¶¯´ÎÊý»áºÜ´ó£»
- * 	Èç¹ûÕâ¸öarrÊý×éµÄÊý¾ÝÁ¿·Ç³£´ó£¬ÕâÖÖÒÆ¶¯´ÎÊýµÄ¿ªÏú»á¸ü¼ÓÃ÷ÏÔ¡£
+ * æ ¸å¿ƒæ€æƒ³ï¼š
+ * 	è§£å†³ç›´æŽ¥æ’å…¥æŽ’åºä¸­å¦‚æžœæœ€å°å€¼åœ¨åŽé¢ï¼Œç§»åŠ¨æ¬¡æ•°å¤šçš„é—®é¢˜ã€‚
+ * 	æ¯”å¦‚ï¼šæ•°ç»„arr = {2,3,4,5,6,7,8,9,1}ï¼›
+ * 	æŸä¸€æ—¶åˆ»çš„æœ‰åºè¡¨åŒ…å«23456789ï¼Œæ— åºè¡¨ä¸­æ˜¯1ï¼Œè¿™æ˜¯éœ€è¦å°†æ— åºè¡¨ä¸­çš„1æ’å…¥åˆ°æœ‰åºè¡¨ä¸­ï¼Œæœ‰åºè¡¨çš„ç§»åŠ¨æ¬¡æ•°ä¼šå¾ˆå¤§ï¼›
+ * 	å¦‚æžœè¿™ä¸ªarræ•°ç»„çš„æ•°æ®é‡éžå¸¸å¤§ï¼Œè¿™ç§ç§»åŠ¨æ¬¡æ•°çš„å¼€é”€ä¼šæ›´åŠ æ˜Žæ˜¾ã€‚
  * 
- * Ê±¼ä¸´ÔÓ¶È£ºO(n^s)<1s<2
+ * æ—¶é—´å¤æ‚åº¦ï¼šO(n^s)<1s<2
  * 
  * @author GongChang
  *
@@ -23,18 +23,18 @@ public class ShellsSort {
 	public static void main(String[] args) {
 		int[] intArr = {1,3,56,-2,-2,-78,332,-2,42};
 		
-		System.out.println("ÅÅÐòÇ°£º");
+		System.out.println("æŽ’åºå‰ï¼š");
 		System.out.println(Arrays.toString(intArr));
 		
 		shellsSort1(intArr);
 //		shellsSort2(intArr);
 		
-		System.out.println("ÅÅÐòºó£º");
+		System.out.println("æŽ’åºåŽï¼š");
 		System.out.println(Arrays.toString(intArr));
 	}
 	
 	/**
-	 * ½»»»·¨ÊµÏÖÏ£¶ûÅÅÐò
+	 * äº¤æ¢æ³•å®žçŽ°å¸Œå°”æŽ’åº
 	 * 
 	 * @param intArr
 	 */
@@ -46,7 +46,7 @@ public class ShellsSort {
 			for(int i=gap; i<=tail; i++){
 				for(int j=i; j-gap>=0; j-=gap) {
 					if(intArr[j]<intArr[j-gap]) {
-						// ÏÂÃæÈýÐÐ´úÂëÌåÏÖÁË½»»»·¨µÄºËÐÄ
+						// ä¸‹é¢ä¸‰è¡Œä»£ç ä½“çŽ°äº†äº¤æ¢æ³•çš„æ ¸å¿ƒ
 						int temp = intArr[j];
 						intArr[j] = intArr[j-gap];
 						intArr[j-gap] = temp;
@@ -58,7 +58,7 @@ public class ShellsSort {
 	}
 	
 	/**
-	 * ÒÆ¶¯·¨ÊµÏÖÏ£¶ûÅÅÐò
+	 * ç§»åŠ¨æ³•å®žçŽ°å¸Œå°”æŽ’åº
 	 * 
 	 * @param intArr
 	 */

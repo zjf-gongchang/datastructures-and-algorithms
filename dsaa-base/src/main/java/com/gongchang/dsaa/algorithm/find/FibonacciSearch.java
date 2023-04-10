@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * ì³²¨ÄÇÆõ²éÕÒ
+ * æ–æ³¢é‚£å¥‘æŸ¥æ‰¾
  * 
  * @author GongChang
  *
@@ -15,19 +15,19 @@ public class FibonacciSearch {
 		Integer[] searchArr = {3,6,1,18,7,12,5,2,19,11};
 		int orgSearchArrMaxIndex = searchArr.length-1;
 		
-		System.out.println("ÅÅÐòÇ°µÄÊý×é£º");
+		System.out.println("æŽ’åºå‰çš„æ•°ç»„ï¼š");
 		arrPrint(searchArr);
 		arrSort(searchArr);
-		System.out.println("ÅÅÐòºóµÄÊý×é£º");
+		System.out.println("æŽ’åºåŽçš„æ•°ç»„ï¼š");
 		arrPrint(searchArr);
 		
 		Integer[] fibArr = buildFibonaccArr();
-		System.out.println("¹¹ÔìµÄì³²¨ÄÇÆõÊý×é£º");
+		System.out.println("æž„é€ çš„æ–æ³¢é‚£å¥‘æ•°ç»„ï¼š");
 		arrPrint(fibArr);
 		
 		Integer scaelSizeKvalue = checkArrScaelSizeKvalue(fibArr, searchArr);
 		searchArr = arrScael(searchArr, fibArr[scaelSizeKvalue]);
-		System.out.println("À©ÈÝºóµÄÊý×é£º");
+		System.out.println("æ‰©å®¹åŽçš„æ•°ç»„ï¼š");
 		arrPrint(searchArr);
 		
 		Integer findValue = 12;
@@ -38,8 +38,8 @@ public class FibonacciSearch {
 	
 	
 	private static void fibSearch(Integer[] fibArr, Integer k, Integer[] searchArr, int left, int right, Integer findValue, int orgSearchArrMaxIndex, MethodInvokeType methodInvokeType) {
-		System.out.println("²éÕÒ·½Ê½Îª£º" + methodInvokeType.name());
-		System.out.println("²éÕÒµÄÊý¾ÝÊÇ£º" + findValue);
+		System.out.println("æŸ¥æ‰¾æ–¹å¼ä¸ºï¼š" + methodInvokeType.name());
+		System.out.println("æŸ¥æ‰¾çš„æ•°æ®æ˜¯ï¼š" + findValue);
 
 		int index = -1;
 		switch (methodInvokeType) {
@@ -50,14 +50,14 @@ public class FibonacciSearch {
 			index = fibLoopSearch(fibArr, k, searchArr, 0, searchArr.length-1, findValue, orgSearchArrMaxIndex);
 			break;
 		default:
-			System.out.println("ÉÐÎ´ÊµÏÖµÄ²éÕÒ·½Ê½");
+			System.out.println("å°šæœªå®žçŽ°çš„æŸ¥æ‰¾æ–¹å¼");
 			return;
 		}
 
 		if (index != -1) {
-			System.out.println("ËÑË÷µ½µÄÊý¾Ý¶ÔÓ¦µÄÏÂ±êÎª£º" + index);
+			System.out.println("æœç´¢åˆ°çš„æ•°æ®å¯¹åº”çš„ä¸‹æ ‡ä¸ºï¼š" + index);
 		} else {
-			System.out.println("Ã»ÓÐËÑË÷µ½ÏàÓ¦µÄÊý¾Ý");
+			System.out.println("æ²¡æœ‰æœç´¢åˆ°ç›¸åº”çš„æ•°æ®");
 		}
 	}
 	
@@ -136,7 +136,7 @@ public class FibonacciSearch {
 	}
 	
 	private static void arrPrint(Integer[] arr) {
-		System.out.println("Êý×é´òÓ¡¿ªÊ¼===>");
+		System.out.println("æ•°ç»„æ‰“å°å¼€å§‹===>");
 		int length = arr.length;
 		for (int i = 0; i < length; i++) {
 			System.out.print(arr[i]);
@@ -146,7 +146,7 @@ public class FibonacciSearch {
 				System.out.println();
 			}
 		}
-		System.out.println("Êý×é´òÓ¡Íê³É===<");
+		System.out.println("æ•°ç»„æ‰“å°å®Œæˆ===<");
 		System.out.println();
 	}
 	

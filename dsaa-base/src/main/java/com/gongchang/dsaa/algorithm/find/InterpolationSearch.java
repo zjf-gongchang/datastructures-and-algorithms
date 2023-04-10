@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * ²åÖµ²éÕÒ ²åÖµ²éÕÒ¸úÊÊºÏ·Ö²¼±È½Ï¾ùÔÈµÄÊı¾İ
+ * æ’å€¼æŸ¥æ‰¾ æ’å€¼æŸ¥æ‰¾è·Ÿé€‚åˆåˆ†å¸ƒæ¯”è¾ƒå‡åŒ€çš„æ•°æ®
  * 
- * ²åÖµ²éÕÒÓë¶ş·Ö²éÕÒµÄ²»Í¬Ö®´¦ÔÚÓÚÏµÊı±äÁË£¬½«1/2±ä³ÉÁË(findValue-arr[left])/(arr[right]-arr[left])
+ * æ’å€¼æŸ¥æ‰¾ä¸äºŒåˆ†æŸ¥æ‰¾çš„ä¸åŒä¹‹å¤„åœ¨äºç³»æ•°å˜äº†ï¼Œå°†1/2å˜æˆäº†(findValue-arr[left])/(arr[right]-arr[left])
  * 
- * ¶ş·Ö²éÕÒµÄmid¼ÆËã·½Ê½ÊÇ£ºint mid = left + 1/2 * (right-left); 
- * ²åÖµ²éÕÒµÄmid¼ÆËã·½Ê½ÊÇ£ºint mid = left + (findValue-arr[left])/(arr[right]-arr[left])* (right-left);
+ * äºŒåˆ†æŸ¥æ‰¾çš„midè®¡ç®—æ–¹å¼æ˜¯ï¼šint mid = left + 1/2 * (right-left); 
+ * æ’å€¼æŸ¥æ‰¾çš„midè®¡ç®—æ–¹å¼æ˜¯ï¼šint mid = left + (findValue-arr[left])/(arr[right]-arr[left])* (right-left);
  * 
  * @author GongChang
  *
@@ -20,10 +20,10 @@ public class InterpolationSearch {
 
 		Integer[] intArr = { 1, 3, 2, 55, 42, -23, 24, -78 };
 
-		System.out.println("ÅÅĞòÇ°µÄÊı×é£º");
+		System.out.println("æ’åºå‰çš„æ•°ç»„ï¼š");
 		arrPrint(intArr);
 		arrSort(intArr);
-		System.out.println("ÅÅĞòºóµÄÊı×é£º");
+		System.out.println("æ’åºåçš„æ•°ç»„ï¼š");
 		arrPrint(intArr);
 
 		int findValue = 42;
@@ -39,8 +39,8 @@ public class InterpolationSearch {
 	}
 
 	private static void interpolationSearch(Integer[] intArr, Integer findValue, MethodInvokeType methodInvokeType) {
-		System.out.println("²éÕÒ·½Ê½Îª£º" + methodInvokeType.name());
-		System.out.println("²éÕÒµÄÊı¾İÊÇ£º" + findValue);
+		System.out.println("æŸ¥æ‰¾æ–¹å¼ä¸ºï¼š" + methodInvokeType.name());
+		System.out.println("æŸ¥æ‰¾çš„æ•°æ®æ˜¯ï¼š" + findValue);
 
 		int index = -1;
 		switch (methodInvokeType) {
@@ -51,14 +51,14 @@ public class InterpolationSearch {
 			index = loopBinarySearch(intArr, 0, intArr.length - 1, findValue);
 			break;
 		default:
-			System.out.println("ÉĞÎ´ÊµÏÖµÄ²éÕÒ·½Ê½");
+			System.out.println("å°šæœªå®ç°çš„æŸ¥æ‰¾æ–¹å¼");
 			return;
 		}
 
 		if (index != -1) {
-			System.out.println("ËÑË÷µ½µÄÊı¾İ¶ÔÓ¦µÄÏÂ±êÎª£º" + index);
+			System.out.println("æœç´¢åˆ°çš„æ•°æ®å¯¹åº”çš„ä¸‹æ ‡ä¸ºï¼š" + index);
 		} else {
-			System.out.println("Ã»ÓĞËÑË÷µ½ÏàÓ¦µÄÊı¾İ");
+			System.out.println("æ²¡æœ‰æœç´¢åˆ°ç›¸åº”çš„æ•°æ®");
 		}
 	}
 
@@ -78,7 +78,7 @@ public class InterpolationSearch {
 	}
 
 	private static void arrPrint(Integer[] arr) {
-		System.out.println("Êı×é´òÓ¡¿ªÊ¼===>");
+		System.out.println("æ•°ç»„æ‰“å°å¼€å§‹===>");
 		int length = arr.length;
 		for (int i = 0; i < length; i++) {
 			System.out.print(arr[i]);
@@ -88,13 +88,13 @@ public class InterpolationSearch {
 				System.out.println();
 			}
 		}
-		System.out.println("Êı×é´òÓ¡Íê³É===<");
+		System.out.println("æ•°ç»„æ‰“å°å®Œæˆ===<");
 		System.out.println();
 	}
 
 	private static int recursionBinarySearch(Integer[] arr, int left, int right, int findValue) {
-		// ÕâÀïµÄfindValue < arr[left] || findValue > arr[right]²»ÄÜÊ¡ÂÔ£¬·ñÔò»áÏÂ±êÔ½½ç
-		// ÒòÎªÈç¹ûÃ»ÓĞÕâÁ½¸öÅĞ¶Ï(findValue - arr[left]) / (arr[right] - arr[left])¿ÉÄÜ»á´óÓÚ1£¬µ¼ÖÂ×îÖÕµÄmid³¬³öÊı×éÏÂ±ê
+		// è¿™é‡Œçš„findValue < arr[left] || findValue > arr[right]ä¸èƒ½çœç•¥ï¼Œå¦åˆ™ä¼šä¸‹æ ‡è¶Šç•Œ
+		// å› ä¸ºå¦‚æœæ²¡æœ‰è¿™ä¸¤ä¸ªåˆ¤æ–­(findValue - arr[left]) / (arr[right] - arr[left])å¯èƒ½ä¼šå¤§äº1ï¼Œå¯¼è‡´æœ€ç»ˆçš„midè¶…å‡ºæ•°ç»„ä¸‹æ ‡
 		if (left > right || findValue < arr[left] || findValue > arr[right]) {
 			return -1;
 		}
@@ -110,8 +110,8 @@ public class InterpolationSearch {
 	}
 
 	private static int loopBinarySearch(Integer[] arr, int left, int right, int findValue) {
-		// ÕâÀïµÄfindValue < arr[left] || findValue > arr[right]²»ÄÜÊ¡ÂÔ£¬·ñÔò»áÏÂ±êÔ½½ç
-		// ÒòÎªÈç¹ûÃ»ÓĞÕâÁ½¸öÅĞ¶Ï(findValue - arr[left]) / (arr[right] - arr[left])¿ÉÄÜ»á´óÓÚ1£¬µ¼ÖÂ×îÖÕµÄmid³¬³öÊı×éÏÂ±ê
+		// è¿™é‡Œçš„findValue < arr[left] || findValue > arr[right]ä¸èƒ½çœç•¥ï¼Œå¦åˆ™ä¼šä¸‹æ ‡è¶Šç•Œ
+		// å› ä¸ºå¦‚æœæ²¡æœ‰è¿™ä¸¤ä¸ªåˆ¤æ–­(findValue - arr[left]) / (arr[right] - arr[left])å¯èƒ½ä¼šå¤§äº1ï¼Œå¯¼è‡´æœ€ç»ˆçš„midè¶…å‡ºæ•°ç»„ä¸‹æ ‡
 		if (findValue < arr[left] || findValue > arr[right]) {
 			return -1;
 		}
