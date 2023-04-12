@@ -19,8 +19,6 @@ public class HannotTower {
 		hannotTower.hannotTower(num, 'A', 'B', 'C');
 	}
 	
-	
-	
 	/**
 	 * 
 	 * @param num A柱上盘子的编号，从上往下盘子的编号依次为1到num
