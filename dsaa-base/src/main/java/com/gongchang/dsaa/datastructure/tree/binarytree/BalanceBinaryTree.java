@@ -1,26 +1,26 @@
 package com.gongchang.dsaa.datastructure.tree.binarytree;
 
 /**
- * 二叉排序树
+ * 平衡二叉树（又叫平衡二叉搜素树）
  * 
- * 数组适合做get和set访问，因为插入删除需要移动数组，相对链表来说开销很大
- * 来拿表适合做插入删除，因为get和set需要移动指针，相对数组来说开销很大
+ * 介绍：平衡二叉树中左右子树最大高度差不会超过1，并且树中的任意一个子数都是一棵平衡二叉树
  * 
- * 数组做搜索：
- * 	若是有序数组可以用二分查找，斐波那契查找，差值查找等方式，但是维护有序数组开销很大（比如有新的数据插入）
- * 	若是无序数组则需要遍历，开销很大
- * 链表做搜索：
- * 	开销都大，因为需要遍历链表
+ * 二叉排序数在极端的情况下可能会退化成单链表，查询性能极其差；
+ * 就算没有退化成单链表，二叉排序数在高度很大的情况下也会影响查询性能
  * 
- * 二叉排序树把get,set,插入，删除，搜索的时间复杂度控制在了log(n),即提高了搜索性能，而且使得get,set,插入，删除的性能也不差
+ * 平衡二叉树通过某种方式降低树的高度，解决了二叉排序树因为高度引起的查询性能问题
+ * 
+ * 平衡二叉树的实现方式：红黑树，AVL树，替罪羊树，Treap，伸展树等
+ * 
+ * 此案例的实现位置是在执行addNode的时候，添加完节点立即判断是否需要平衡
  * 
  * @author gongchang
  *
  */
-public class BinarySortTree {
+public class BalanceBinaryTree {
 
 	public static void main(String[] args) {
-		BinarySortTree binarySortTree = new BinarySortTree();
+		BalanceBinaryTree binarySortTree = new BalanceBinaryTree();
 		int[] intArr = {1,7,4,3,5,6};
 		binarySortTree.buildBinaryTree(intArr);
 		
@@ -194,6 +194,61 @@ public class BinarySortTree {
 			this.name = name;
 		}
 		
+		public int getHeight(){
+			return Math.max(this.leftNode==null?0:this.leftNode.getHeight(), this.rightNode==null?0:this.rightNode.getHeight())+1;
+		}
+		
+		public int getLeftNodeHeight(){
+			return leftNode==null?0:leftNode.getHeight();
+		}
+		
+		public int getRightNodeHeight(){
+			return rightNode==null?0:rightNode.getHeight();
+		}
+		
+		public void rotation(){
+			// 左旋转
+			if(this.getRightNodeHeight()-this.getLeftNodeHeight()>1){
+				// 右子树右旋转
+				if(rightNode!=null&&rightNode.getLeftNodeHeight()>rightNode.getRightNodeHeight()){
+					rightNode.rightRotation();
+				}
+				leftRotation();
+				
+				return;
+			}
+			// 右旋转
+			if(getLeftNodeHeight()-getRightNodeHeight()>1){
+				// 左子树左旋转
+				if(leftNode!=null&&leftNode.getRightNodeHeight()>leftNode.getLeftNodeHeight()){
+					leftNode.leftRotation();
+				}
+				rightRotation();
+			}
+		}
+		
+		private void leftRotation(){
+			Node newNode = new Node(data, name);
+			newNode.setLeftNode(leftNode);
+			newNode.setRightNode(rightNode.getLeftNode());
+			
+			setData(rightNode.getData());
+			setName(rightNode.getName());
+			setLeftNode(newNode);
+			setRightNode(rightNode.getRightNode());
+		}
+		
+		private void rightRotation(){
+			Node newNode = new Node(data, name);
+			newNode.setRightNode(rightNode);
+			newNode.setLeftNode(leftNode.getRightNode());
+			
+			setData(leftNode.getData());
+			setName(leftNode.getName());
+			setRightNode(newNode);
+			setLeftNode(leftNode.getLeftNode());
+		}
+		
 		public void midOrderTraversal(){
 			if(leftNode!=null){
 				leftNode.midOrderTraversal();
@@ -234,6 +289,9 @@ public class BinarySortTree {
 					rightNode = node;
 				}
 			}
+			
+			// 旋转
+			rotation();
 		}
 		
 		public void setNode(Node node){
