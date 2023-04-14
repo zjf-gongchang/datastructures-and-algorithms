@@ -1,7 +1,7 @@
 package com.gongchang.dsaa.datastructure.tree.binarytree;
 
 /**
- * 平衡二叉树（又叫平衡二叉搜素树）
+ * 平衡二叉树（又叫平衡二叉搜索树）
  * 
  * 介绍：平衡二叉树中左右子树最大高度差不会超过1，并且树中的任意一个子数都是一棵平衡二叉树
  * 
