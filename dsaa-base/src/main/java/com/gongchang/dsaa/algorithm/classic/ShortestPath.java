@@ -11,7 +11,11 @@ import java.util.List;
  * 
  * 迪杰斯特拉算法核心思想：从一个节点开始以宽度优先的方式向外扩展，扩展的过程中记录访问信息、前驱顶点、最小距离，直到扩展到终点为止
  * 
- * 佛洛伊德算法核心思想：
+ * 佛洛伊德算法核心思想：以任意顶点作为出发顶点，计算从任意顶点到另一任意顶点的最短距；3层暴力循环，详细逻辑看方法floyd()
+ * 
+ * 佛洛伊德算法与佛洛伊德算法比较：
+ * 1.佛洛伊德算法计算出来的是从某一个指定的顶点到其它所有顶点的最短路径
+ * 2.佛洛伊德算法计算出来的是从每一个顶点到其它顶点的最短路径
  * 
  * @Author	gongchang
  */
@@ -26,16 +30,20 @@ public class ShortestPath {
 		
 		shortestPath.showGrpah();
 		
-		int startIndex = 2;
-		int endIndex = 3;
-		PathInfo dijkstra = shortestPath.dijkstra(startIndex);
+		int startIndex = 0;
+		int endIndex = 5;
+		
+		System.out.println("迪杰斯特拉算法==================================");
+		SinglePathInfo dijkstra = shortestPath.dijkstra(startIndex);
 		List<Node> shortestPathList = dijkstra.getShortestPathList(endIndex);
 		int shortestPathValue = dijkstra.getShortestPathValue(endIndex);
-		List<Node> nodeList = shortestPath.getNodeList();
-		System.out.println("从："+nodeList.get(startIndex).getName()+"到："+nodeList.get(endIndex).getName()+"的最短路径是："+shortestPathValue+"，经过的路线是：");
-		for (Node node : shortestPathList) {
-			System.out.println(node.getName());
-		}
+		shortestPath.printPathInfo(startIndex, endIndex, shortestPathList, shortestPathValue);
+		
+		System.out.println("佛洛伊德算法==================================");
+		MultiPathInfo floyd = shortestPath.floyd();
+		List<Node> shortestPathList2 = floyd.getShortestPathList(startIndex, endIndex);
+		int shortestPathValue2 = floyd.getShortestPathValue(startIndex, endIndex);
+		shortestPath.printPathInfo(startIndex, endIndex, shortestPathList2, shortestPathValue2);
 		
 	}
 	
@@ -86,9 +94,56 @@ public class ShortestPath {
 		
 		for(int i=0; i<edges.length; i++){
 			for(int j=0; j<edges[i].length; j++){
-				edges[i][j] = NO_CONNECTED;
+				if(i==j){
+					edges[i][j] = 0;
+				}else{
+					edges[i][j] = NO_CONNECTED;
+				}
 			}
 		}
+	}
+	
+	public void printPathInfo(int startIndex, int endIndex, List<Node> shortestPathList, int shortestPathValue){
+		System.out.println("从："+nodeList.get(startIndex).getName()+"到："+nodeList.get(endIndex).getName()+"的最短路径是："+shortestPathValue+"，经过的路线是：");
+		for (Node node : shortestPathList) {
+			System.out.println(node.getName());
+		}
+	}
+	
+	/**
+	 * 佛洛伊德算法计算最短路径
+	 * 
+	 * @return 
+	 */
+	public MultiPathInfo floyd(){
+		MultiPathInfo multiPathInfo = new MultiPathInfo(edges);
+		
+		// 以顶点m作为中间顶点
+		for(int m=0; m<multiPathInfo.getNodeNum(); m++){
+			// 从顶点i出发
+			for(int i=0; i<multiPathInfo.getNodeNum(); i++){
+				if(edges[i][m]==NO_CONNECTED){
+					continue;
+				}
+				// 到达j顶点
+				for(int j=0; j<multiPathInfo.getNodeNum(); j++){
+					if(edges[m][j]==NO_CONNECTED){
+						continue;
+					}
+					if(m==6&&i==2&&j==3){
+						System.out.println(i);
+					}
+					// 计算最短路径和前驱顶点
+					int tempMinDis = multiPathInfo.getMinDis(i, m)+multiPathInfo.getMinDis(m, j);
+					if(tempMinDis<multiPathInfo.getMinDis(i, j) || edges[i][j]==NO_CONNECTED){
+						multiPathInfo.setMinDis(i, j, tempMinDis);
+						multiPathInfo.setPreIndex(i, j, multiPathInfo.getPreIndex(m, j));
+					}
+				}
+			}
+		}
+		
+		return multiPathInfo;
 	}
 	
 	/**
@@ -97,9 +152,9 @@ public class ShortestPath {
 	 * @param startIndex 起始下标
 	 * @return 
 	 */
-	public PathInfo dijkstra(int startIndex){
+	public SinglePathInfo dijkstra(int startIndex){
 		int nodeNum = getNodeNum();
-		PathInfo nodeInfo = new PathInfo(nodeNum, startIndex);
+		SinglePathInfo nodeInfo = new SinglePathInfo(nodeNum, startIndex);
 		dijkstraConputerUtil(nodeInfo, startIndex);
 		for(int i=1; i<nodeNum; i++){
 			int nextIndex = nodeInfo.getNextNodeIndex();
@@ -108,7 +163,7 @@ public class ShortestPath {
 		return nodeInfo;
 	}
 	
-	private void dijkstraConputerUtil(PathInfo nodeInfo, int index){
+	private void dijkstraConputerUtil(SinglePathInfo nodeInfo, int index){
 		int length = 0;
 		for(int i=0; i<edges[index].length; i++){
 			if(edges[index][i]==NO_CONNECTED){
@@ -169,19 +224,97 @@ public class ShortestPath {
 		this.edgeSum = edgeSum;
 	}
 
+	private class MultiPathInfo{
+		int nodeNum;
+		
+		// 一维下标值是顶点的下标，每个下标对应的值表示出发顶点；
+		// 二维下标值是顶点的下标，每个下标对应的值表示前驱顶点的下标
+		int[][] preArr;
+		// 一维下标值是顶点的下标，每个下标对应的值表示出发顶点；
+		// 二维下标值是顶点的下标，每个下标对应的值表示从出发顶点到该下标对应顶点的距离
+		int[][] minDisArr;
+		
+		
+		public MultiPathInfo(int[][] edges) {
+			this.nodeNum = edges.length;
+			
+			this.preArr = new int[nodeNum][nodeNum];
+			for(int i=0; i<nodeNum; i++){
+				Arrays.fill(preArr[i], i);
+			}
+			
+			this.minDisArr = new int[nodeNum][nodeNum];
+			for(int i=0; i<nodeNum; i++){
+				for(int j=0; j<nodeNum; j++){
+					minDisArr[i][j] = edges[i][j];
+				}
+			}
+		}
+		
+		
+		public List<Node> getShortestPathList(int startIndex, int endIndex){
+			List<Integer> indexList = new ArrayList<Integer>();
+			int i = endIndex;
+			int[] pathArr = this.preArr[startIndex];
+			while(true){
+				indexList.add(i);
+				if(i==startIndex){
+					break;
+				}
+				i = pathArr[i];
+			}
+			
+			List<Node> resultList = new ArrayList<Node>();
+			for(int j=indexList.size()-1; j>=0; j--){
+				resultList.add(nodeList.get(indexList.get(j)));
+			}
+			return resultList;
+		}
+		
+		public int getShortestPathValue(int startIndex, int endIndex){
+			return minDisArr[startIndex][endIndex];
+		}
+		
+		
+		public int getNodeNum() {
+			return nodeNum;
+		}
+
+		public void setNodeNum(int nodeNum) {
+			this.nodeNum = nodeNum;
+		}
+
+		public int getPreIndex(int startIndex, int endIndex){
+			return preArr[startIndex][endIndex];
+		}
+		
+		public void setPreIndex(int startIndex, int endIndex, int preIndex){
+			preArr[startIndex][endIndex] = preIndex;
+		}
+		
+		public int getMinDis(int startIndex, int endIndex){
+			return minDisArr[startIndex][endIndex];
+		}
+		
+		public void setMinDis(int startIndex, int endIndex, int minDis){
+			minDisArr[startIndex][endIndex] = minDis;
+		}
+		
+	}	
 	
-	private class PathInfo{
+	private class SinglePathInfo{
+		// 出发顶点的索引下标
 		int startIndex;
 		
 		// 下标值是顶点的下标，每个下标对应的值表示该顶点是否被访问过
 		int[] visitedArr;
-		// 下标值是顶点的下标，每个下标对应的值表示前一个顶点的下标
+		// 下标值是顶点的下标，每个下标对应的值表示前驱顶点的下标
 		int[] preArr;
 		// 下标值是顶点的下标，每个下标对应的值表示从出发顶点到该下标对应顶点的距离
 		int[] minDisArr;
 		
 		
-		public PathInfo(int length, int startIndex) {
+		public SinglePathInfo(int length, int startIndex) {
 			super();
 			this.startIndex = startIndex;
 			this.visitedArr = new int[length];
@@ -194,6 +327,7 @@ public class ShortestPath {
 		private void initPathInfo(){
 			// 是否访问默认初始化为：未访问（0），数组初始化，默认就是0，不用设置
 			// 前驱节点索引默认初始化为：无(0)，数组初始化，默认就是0，不用设置
+			Arrays.fill(preArr, startIndex);
 			// 最小距离默认初始化为：int最大值
 			Arrays.fill(minDisArr, Integer.MAX_VALUE);
 			
@@ -209,7 +343,7 @@ public class ShortestPath {
 			int i = endIndex;
 			while(true){
 				indexList.add(i);
-				if(i==startIndex||i==0){
+				if(i==startIndex){
 					break;
 				}
 				i = preArr[i];
@@ -280,10 +414,6 @@ public class ShortestPath {
 			this.name = name;
 		}
 
-		public void printPathInfo() {
-			System.out.println(this.toString());
-		}
-		
 		
 		public int getId() {
 			return id;
