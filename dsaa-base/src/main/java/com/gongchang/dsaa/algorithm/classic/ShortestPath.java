@@ -30,8 +30,8 @@ public class ShortestPath {
 		
 		shortestPath.showGrpah();
 		
-		int startIndex = 0;
-		int endIndex = 5;
+		int startIndex = 1;
+		int endIndex = 4;
 		
 		System.out.println("迪杰斯特拉算法==================================");
 		SinglePathInfo dijkstra = shortestPath.dijkstra(startIndex);
@@ -122,20 +122,17 @@ public class ShortestPath {
 		for(int m=0; m<multiPathInfo.getNodeNum(); m++){
 			// 从顶点i出发
 			for(int i=0; i<multiPathInfo.getNodeNum(); i++){
-				if(edges[i][m]==NO_CONNECTED){
+				if(multiPathInfo.getMinDis(i, m)==NO_CONNECTED){
 					continue;
 				}
 				// 到达j顶点
 				for(int j=0; j<multiPathInfo.getNodeNum(); j++){
-					if(edges[m][j]==NO_CONNECTED){
+					if(multiPathInfo.getMinDis(m, j)==NO_CONNECTED){
 						continue;
-					}
-					if(m==6&&i==2&&j==3){
-						System.out.println(i);
 					}
 					// 计算最短路径和前驱顶点
 					int tempMinDis = multiPathInfo.getMinDis(i, m)+multiPathInfo.getMinDis(m, j);
-					if(tempMinDis<multiPathInfo.getMinDis(i, j) || edges[i][j]==NO_CONNECTED){
+					if(tempMinDis<multiPathInfo.getMinDis(i, j) ||multiPathInfo.getMinDis(i, j)==NO_CONNECTED){
 						multiPathInfo.setMinDis(i, j, tempMinDis);
 						multiPathInfo.setPreIndex(i, j, multiPathInfo.getPreIndex(m, j));
 					}
@@ -327,7 +324,6 @@ public class ShortestPath {
 		private void initPathInfo(){
 			// 是否访问默认初始化为：未访问（0），数组初始化，默认就是0，不用设置
 			// 前驱节点索引默认初始化为：无(0)，数组初始化，默认就是0，不用设置
-			Arrays.fill(preArr, startIndex);
 			// 最小距离默认初始化为：int最大值
 			Arrays.fill(minDisArr, Integer.MAX_VALUE);
 			
