@@ -5,6 +5,8 @@ import java.util.Arrays;
 /**
  * 迷宫问题
  * 
+ * 介绍：在一个迷宫地图中，给定一个位置，从这个位置开始找到迷宫的出口
+ * 
  * @Author	gongchang
  */
 public class Maze {
