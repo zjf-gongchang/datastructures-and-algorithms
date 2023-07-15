@@ -16,10 +16,26 @@ package com.gongchang.dsaa.algorithm.find;
  */
 public class BloomFilter {
 
+	/**
+	 * 进行哈希的次数
+	 */
 	private int k;
+	
+	/**
+	 * 每个key战争用的位数
+	 */
 	private int bitsPerKey;
+	
+	/**
+	 * 位数组的大小
+	 */
 	private int bitLen;
+	
+	/**
+	 * 位数组
+	 */
 	private byte[] result;
+	
 	
 	/**
 	 * 
@@ -31,19 +47,25 @@ public class BloomFilter {
 		this.bitsPerKey = bitsPerKey;
 	}
 	
+	/**
+	 * 一次针对一批数据构建布隆过滤器
+	 * 
+	 * @param keys 二维数组，一维代表key的下标，二维代表key的值
+	 * @return 生成的布隆过滤器数组
+	 */
 	public byte[] generate(byte[][] keys){
 		assert keys!=null;
 		bitLen = keys.length * bitsPerKey;
-		bitLen = ((bitLen + 7) / 8) << 3; // align the bitLen.
+		bitLen = ((bitLen + 7) / 8) << 3; // ((bitLen + 7) / 8)部分计算出有几个字节，然后左移3（因为一个字节是8位，位运算就是3）计算出位数
 		bitLen = bitLen < 64 ? 64 : bitLen;
-		result = new byte[bitLen >> 3]; // each byte have 8 bit.
+		result = new byte[bitLen >> 3]; // 右移3（因为一个字节是8位，位运算就是3）计算出字节大小，以便构建数组
 		for( int i=0; i < keys.length; i++){
 			assert keys[i] != null;
 			int h  = Bytes.hash(keys[i]);
 			for(int t = 0; t < k; t++){
 				int idx = (h % bitLen+ bitLen) % bitLen;
-				result[idx / 8] |= (1 << (idx % 8));
-				// 第一次哈希函数之后借助位运算实现后面的多次哈希
+				result[idx / 8] |= (1 << (idx % 8));                                                                
+				// 第一次哈希函数之后借助位运算实现后面的多次哈希，以提高性能
 				int delta = (h >> 17) | (h << 15);
 				h += delta;
 			}
@@ -51,6 +73,12 @@ public class BloomFilter {
 		return result;
 	}
 	
+	/**
+	 * 判断一个key是否可能存在于布隆过滤器中
+	 * 
+	 * @param key 要判断的key
+	 * @return 可能存在返回-true，不存在返回false
+	 */
 	public boolean contains(byte[] key){
 		assert result != null;
 		int h = Bytes.hash(key);
@@ -59,7 +87,7 @@ public class BloomFilter {
 			if((result[idx / 8] & (1 << (idx % 8))) == 0){
 				return false;
 			}
-			// 第一次哈希函数之后借助位运算实现后面的多次哈希
+			// 第一次哈希函数之后借助位运算实现后面的多次哈希，以提高性能
 			int delta = (h >> 17) | (h << 15);
 			h += delta;
 		}
@@ -68,9 +96,12 @@ public class BloomFilter {
 	
 	private static class Bytes{
 		public static int hash(byte[] key){
-			// 这里是hash函数的实现
+			// 这里是hash函数的实现，返回哈希的结果
 			return 0;
 		}
 	}
 	
+	public static void main(String[] args) {
+		System.out.println(1&3);
+	}
 }
