@@ -12,7 +12,7 @@ import java.util.Arrays;
  * 	若有n个元素，则进行n-1轮排序
  * 	每一轮从无序数组的头部取一个元素插入到有序数组中
  * 
- * 时间复杂度：O(n2)
+ * 最坏时间复杂度：O(n2)
  * 
  * @author GongChang
  *

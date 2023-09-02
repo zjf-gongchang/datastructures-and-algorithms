@@ -3,11 +3,13 @@ package com.gongchang.dsaa.algorithm.sort;
 /**
  * 计数排序
  * 
- * 排序类型：
+ * 排序类型：稳定排序
  * 
  * 核心思想：
+ * 	1.以数组中的最大值作为新数组的大小
+ * 	2.遍历老数组，在新数组中以老数组中的元素值作为下标记录元素出现的次数
  * 
- * 时间复杂度：O(n + k)
+ * 最坏时间复杂度：O(n + k) n是数的规模，k是桶的个数
  * 
  * @author GongChang
  *
@@ -19,7 +21,6 @@ public class CountingSort {
             return;
         }
 
-        // 1. 找到数组中的最大值
         int max = arr[0];
         for (int num : arr) {
             if (num > max) {
@@ -27,13 +28,12 @@ public class CountingSort {
             }
         }
 
-        // 2. 创建计数数组并初始化
+        // 这里是核心，以原始数据作为下标，记录下每个数出现的次数
         int[] countArray = new int[max + 1];
         for (int num : arr) {
             countArray[num]++;
         }
 
-        // 3. 根据计数数组重新构建排序后的数组
         int index = 0;
         for (int i = 0; i <= max; i++) {
             while (countArray[i] > 0) {
@@ -43,7 +43,6 @@ public class CountingSort {
         }
     }
 
-    // 测试计数排序
     public static void main(String[] args) {
         int[] arr = {4, 2, 2, 8, 3, 3, 1};
 

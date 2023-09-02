@@ -12,7 +12,7 @@ import java.util.Arrays;
  * 	从大到小排序就构建大顶堆，每次将堆顶的元素往后移动
  * 	从小到大排序就构建小顶堆，每次将堆顶的元素往后移动
  * 
- * 时间复杂度：O(nlogn)
+ * 最坏时间复杂度：O(nlogn)
  * 
  * @author GongChang
  *

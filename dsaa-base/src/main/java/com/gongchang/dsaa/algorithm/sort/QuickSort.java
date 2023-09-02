@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 
  * 	然后将左右两部分数组分别作为新的数组继续执行上面的操作，知道数组不可再分
  * 
- * 时间复杂度：O(n2)
+ * 最坏时间复杂度：O(n2)
  * 
  * @author GongChang
  *

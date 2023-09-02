@@ -12,7 +12,7 @@ import java.util.Arrays;
  * 	若有n个元素，则进行n-1轮排序
  * 	每一轮排序中将最大的值移动到参与本轮排序的数组的尾部
  * 
- * 时间复杂度O(n2)
+ * 最坏时间复杂度O(n2)
  * 
  * @author GongChang
  *
